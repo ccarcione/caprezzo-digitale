@@ -1,0 +1,17 @@
+<div *ngIf="!showOfflineContainer" class="loading-wrapper">
+    <div class="loading-devover">
+    </div>
+    <div class="img">
+        <img src="assets/images/icon-original.png" alt="" srcset="">
+    </div>
+</div>
+<div *ngIf="showOfflineContainer" class="container-offline">
+    <div>
+        <img class="image-offline" src="/assets/images/offline_2.svg" />
+        <div class="text-offline">
+            <p>Nessuna connessione a internet</p>
+            <button mat-raised-button (click)="restartApp()">Riprova</button>
+        </div>
+    </div>
+</div>
+<img style="display: none;" src="/assets/images/offline_2.svg" />

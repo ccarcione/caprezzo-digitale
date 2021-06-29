@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+    width: 100%;
+}
+.logo {
+    padding: 24px 0px;
+    max-width: 256px;
+    max-height: 256px;
+}

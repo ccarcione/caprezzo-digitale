@@ -1,0 +1,217 @@
+<ng-template #toolbar>
+    <div [ngClass]="marginTopAppleDevice()"></div>
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+            <mat-icon aria-hidden="false" aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <img src="assets/images/icon-original.png">
+        <ng-content *ngIf="!title; else title" select="[shell-title]"></ng-content>
+
+        <div style="display: flex; flex-direction: row;" *ngIf="titleContainer">
+            <div style="margin: 0px 10px;" *ngIf="!(isHandset$ | async)"> - </div> 
+            <ng-content *ngIf="!titleContainer; else titleContainer" select="[shell-titleContainer]"></ng-content>
+        </div>
+        
+        <span class="space"></span>
+        <ng-content *ngIf="!actions; else actions" select="[shell-actions]"></ng-content>
+        <ng-content select="[shell-global-actions]"></ng-content>
+        <button mat-icon-button [matMenuTriggerFor]="menuContainer" *ngIf="hasMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menuContainer>
+            <ng-content *ngIf="!menu; else menu" select="[shell-menu]"></ng-content>
+        </mat-menu>
+    </mat-toolbar>
+</ng-template>
+
+<ng-container *ngIf="!(isHandset$ | async)">
+    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+</ng-container>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav mat-elevation-z4" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+        <ng-content *ngIf="!nav; else nav" select="[shell-nav]"></ng-content>
+        <!-- <div class="user-menu">
+            <img src="assets/images/icon-original.png" alt="">
+            <div class="info">
+                <p>{{versionJson.appName}}</p>
+                <p>info@apublic-client.it</p>
+                <p>{{versionJson.displayVersionText}}</p>
+            </div>
+        </div> -->
+
+        <mat-accordion>
+            <mat-nav-list>
+                <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>group_work</mat-icon>
+                    <a mat-list-item routerLink="/bacheca" (click)="onNavClick(drawer)"> Bacheca del paese </a>
+                </div>
+                <!-- <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>warning</mat-icon>
+                    <a mat-list-item routerLink="/allerte" (click)="onNavClick(drawer)"> Allerte (v.1.1) </a>
+                </div>
+                <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>event</mat-icon>
+                    <a mat-list-item routerLink="/eventi" (click)="onNavClick(drawer)"> Eventi (prossimamente...) </a>
+                </div>
+                <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>notifications_active</mat-icon>
+                    <a mat-list-item routerLink="/servizio-notifiche" (click)="onNavClick(drawer)"> Notifiche (pagina di sviluppo) (v.1.4)</a>
+                </div> -->
+                <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>monochrome_photos</mat-icon>
+                    <a mat-list-item routerLink="/galleria" (click)="onNavClick(drawer)"> Galleria Foto</a>
+                </div>
+            </mat-nav-list>
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-letter-text">
+                            <mat-icon>T</mat-icon>
+                            <label>Turismo (prossimamente...)</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>contacts</mat-icon>
+                        <a mat-list-item routerLink="/info-sentieri" (click)="onNavClick(drawer)"> Info Sentieri </a>
+                    </div>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>info</mat-icon>
+                        <a mat-list-item routerLink="/sentieri" (click)="onNavClick(drawer)"> Sentieri </a>
+                    </div>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>contacts</mat-icon>
+                        <a mat-list-item routerLink="/altro" (click)="onNavClick(drawer)"> Altro </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel> -->
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
+                            <mat-icon>W</mat-icon>
+                            <label>Wiki (prossimamente...)</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>W1</mat-icon>
+                        <a mat-list-item routerLink="/wiki" (click)="onNavClick(drawer)"> Wiki 1 </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>W2</mat-icon>
+                        <a mat-list-item routerLink="/wiki" (click)="onNavClick(drawer)"> Wiki 2 </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>W3</mat-icon>
+                        <a mat-list-item routerLink="/wiki" (click)="onNavClick(drawer)"> Wiki 3 </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel> -->
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
+                            <mat-icon>S</mat-icon>
+                            <label>Servizi al cittadino (v.1.1)</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>U</mat-icon>
+                        <a mat-list-item routerLink="/servizi-al-cittadino/uffici" (click)="onNavClick(drawer)"> Uffici </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>N</mat-icon>
+                        <a mat-list-item routerLink="/servizi-al-cittadino/negozi-e-strutture" (click)="onNavClick(drawer)"> Negozi e strutture </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>R</mat-icon>
+                        <a mat-list-item routerLink="/servizi-al-cittadino/raccolta-differenziata" (click)="onNavClick(drawer)"> Raccolta differenziata (v.1.3)</a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>T</mat-icon>
+                        <a mat-list-item routerLink="/servizi-al-cittadino/trasporto" (click)="onNavClick(drawer)"> Trasporto </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>R</mat-icon>
+                        <a mat-list-item routerLink="/servizi-al-cittadino/recapiti" (click)="onNavClick(drawer)"> Recapiti </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel> -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
+                            <mat-icon>supervised_user_circle</mat-icon>
+                            <label>Amministrazione Trasparente </label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>list</mat-icon>
+                        <a mat-list-item target="_blank" href="http://www.amministrazionetrasparenteweb.it/index.asp?cc=capr19_ax#"> Amministrazione Trasparente </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>list</mat-icon>
+                        <a mat-list-item target="_blank" href="https://www.servizipubblicaamministrazione.it/servizi/saturnweb/Home.aspx?Ce=cprzz1414"> Albo pretorio </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>list</mat-icon>
+                        <a mat-list-item target="_blank" href="http://www.comune.caprezzo.vb.it/albo.aspx"> Albo pretorio 2018 </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
+                            <mat-icon>info</mat-icon>
+                            <label>Informazioni</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>copyright</mat-icon>
+                        <a mat-list-item routerLink="/about" (click)="onNavClick(drawer)"> About </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>new_releases</mat-icon>
+                        <a mat-list-item routerLink="/chi-siamo" (click)="onNavClick(drawer)"> Chi Siamo </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>list_alt</mat-icon>
+                        <a mat-list-item routerLink="/changelog" (click)="onNavClick(drawer)"> Changelog </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <mat-icon>visibility</mat-icon>
+                        <a mat-list-item routerLink="/privacy-policy" (click)="onNavClick(drawer)"> Privacy Policy </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-nav-list>
+                <div class="mat-nav-list-submenu-icon-text">
+                    <mat-icon>start</mat-icon>
+                    <a mat-list-item routerLink="/feedback" (click)="onNavClick(drawer)"> La tua opinione conta! </a>
+                </div>
+            </mat-nav-list>
+            <div class="space"></div>
+        </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <ng-container *ngIf="(isHandset$ | async)">
+            <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <ng-content select="[shell-content]"></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

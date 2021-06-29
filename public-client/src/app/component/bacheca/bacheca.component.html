@@ -1,0 +1,41 @@
+<ng-template #titleContainer>
+  <span>Bacheca del paese</span>
+</ng-template>
+<ngx-masonry class="masonry-style" [ordered]="true" (itemsLoaded)="itemsLoaded()">
+  <div ngxMasonryItem [prepend]="message[0]" *ngFor="let message of messages" class="item" >
+    <div class="card">
+      <div class="testata">
+        <div class="foto">
+          <img src="{{message.urlImmagine}}" (click)="showImage(message.urlImmagine)">
+        </div>
+        <div class="titoli">
+          <h1>{{message.titolo}}</h1>
+          <div class="chips">
+            <mat-icon [ngStyle]="{'color': message.tipoMessaggio.colore}">{{message.tipoMessaggio.icona}}</mat-icon>
+            <span class="tipo-messaggio-displayText" style="font-size: small;">{{message.tipoMessaggio.displayName}}</span>
+          </div>
+          <h3 *ngIf="message.sottotitolo != null">{{message.sottotitolo}}</h3>
+          <h4>{{message.dataPubblicazione | date: 'dd MMM. yyyy hh:mm'}}</h4>
+          <mat-divider style="padding-bottom: 16px;"></mat-divider>
+          <p [ngClass]="message.showMore ? 'testo-completo' : 'testo'">
+            {{message.testo}}
+          </p>
+        </div>
+        <div *ngIf="message.showMore && message.allegati.length > 0" class="attachment-box">
+          <mat-divider style="padding: 0px 10px 10px 10px;"></mat-divider>
+          <div *ngFor="let allegato of message.allegati" class="attachment">
+            <a href="{{allegato.filePath}}" target="_blank" download>
+              <mat-icon aria-hidden="false">attachment</mat-icon>
+              <span class="attachment-fileName">{{allegato.descrizione}}</span>
+            </a>
+        </div>
+        </div>
+      </div>
+      
+      <button class="custom-border-radius" mat-raised-button color="primary" (click)="openMessage(message)">
+        <span *ngIf="!message.showMore">Più Informazioni</span>
+        <span *ngIf="message.showMore">Meno Informazioni</span>
+      </button>
+    </div>
+  </div>
+</ngx-masonry>

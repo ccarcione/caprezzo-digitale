@@ -1,0 +1,52 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "offline-images",
+      "urls": [
+        "assets/images/offline_2.svg"
+      ],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "7d"
+      }
+    },
+    {
+      "name": "check-online",
+      "urls": [
+        "!/assets/ping.json"
+      ],
+      "cacheConfig": {
+        "maxSize": 0,
+        "maxAge": "0u"
+      }
+    }
+  ]
+}

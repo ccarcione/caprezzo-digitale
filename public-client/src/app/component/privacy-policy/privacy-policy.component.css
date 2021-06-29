@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    height: 100%;
+    box-sizing: border-box;
+}
+.privacy-policy-tab-group {
+    flex: 0 1 auto;
+    overflow-y: hidden;
+}
+mat-divider {
+    flex: 0 0 auto;
+}
+.privacy-policy-tab-group div {
+    padding: 20px 5px;
+    overflow-y: hidden;
+}
+.btn-info-flex {
+    flex: 0 0 auto;
+    padding: 0px 20px;
+    margin: 10px 0px;
+}
+@media only screen and (max-width: 600px) {
+    .btn-info-flex {
+        padding: 0px;
+    }
+}

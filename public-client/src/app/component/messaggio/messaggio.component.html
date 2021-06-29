@@ -1,0 +1,11 @@
+<h1>{{message.titolo}}</h1>
+<h2>{{message.sottotitolo}}</h2>
+<div>{{message.dataPubblicazione}}</div>
+<img src="{{message.urlImmagine}}">
+<div>{{message.testo}}</div>
+<div>
+    <div *ngFor="let allegato of message.allegati" class="attachment">
+        <mat-icon aria-hidden="false" >home</mat-icon>
+        <a href="{{allegato.filePath}}">{{allegato.fileName}}</a>
+    </div>
+</div>

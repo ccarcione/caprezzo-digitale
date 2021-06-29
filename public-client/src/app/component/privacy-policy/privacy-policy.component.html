@@ -1,0 +1,21 @@
+<ng-template #titleContainer>
+    <span>Privacy Policy</span>
+</ng-template>
+<mat-tab-group class="privacy-policy-tab-group">
+    <mat-tab label="ITALIANO" *ngIf="privacyPolicyITA">
+        <div [innerHtml]="privacyPolicyITA"></div>
+    </mat-tab>
+    <mat-tab label="ENGLISH" *ngIf="privacyPolicyENG">
+        <div [innerHtml]="privacyPolicyENG"></div>
+    </mat-tab>
+    <mat-tab label="DEUTSCHE" *ngIf="privacyPolicyDE">
+        <div [innerHtml]="privacyPolicyDE"></div>
+    </mat-tab>
+</mat-tab-group>
+<mat-divider></mat-divider>
+<div class="btn-info-flex">
+    <button class="btn-info background-blue text-color">
+        <a href="https://www.privacypolicies.com/live/3ebfa0de-d891-4dd1-bd36-9e9b9ee0d1d8" target="_blank">Link Privacy Policy</a>
+    </button>
+    <button class="btn-info background-blue text-color" (click)="ripristinaPrivacyPolicy()">Ripristina Privacy Policy</button>
+</div>

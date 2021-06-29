@@ -1,0 +1,109 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.margin-top-apple-device {
+  display: block;
+  background-color: #3f51b5;;
+  height: 20px;
+}
+.space {
+  margin-bottom: 25px;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 255px;
+}
+
+.mat-toolbar.mat-primary {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+img {
+  max-height: 100%;
+  margin: 0 10px;
+  height: 85%;
+}
+
+.mat-panel-title-icon-text, .mat-panel-title-letter-text {
+    display: flex;
+    align-items: center;
+}
+
+.mat-panel-title-letter-text > mat-icon {
+    padding: 0px 0px 10px 5px;
+}
+
+.mat-panel-title-letter-text > label, a {
+    padding: 0px 0px 0px 5px;
+}
+
+.mat-panel-title-icon-text > label, a {
+    padding: 0px 0px 0px 10px;
+}
+
+.mat-nav-list-submenu-icon-text {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.mat-panel-title-icon-text > mat-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px 5px 0px;
+}
+
+.user-menu > mat-icon {
+  flex: 1 0 0;
+  font-size: 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.info {
+  padding-top: 20px;
+  margin-block-end: unset;
+}
+
+.user-menu > img {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+.user-menu > button {
+  margin-bottom: 10px;
+}
+
+mat-expansion-panel-header {
+  padding: 0px 24px 0px 14px;
+}
+
+/deep/ .mat-expansion-panel-content > .mat-expansion-panel-body {
+  padding: 0 14px 16px;
+}

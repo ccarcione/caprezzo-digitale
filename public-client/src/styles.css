@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+/* css per componente star-rating */
+@import "~css-star-rating/css/star-rating.css";
+@import "assets/css/btn-info.css";
+@import "assets/css/popup-style.css";
+/* modifica stile --> rimuovo contorno bordi star-rating */
+.rating {
+    outline: none;
+}
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

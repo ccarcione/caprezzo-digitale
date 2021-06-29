@@ -1,0 +1,191 @@
+# --------------------------------------------------------------
+#   SCRIPT DI APPOGGIO
+# --------------------------------------------------------------
+
+.deploy_webserver_on_linux_template: &deploy_webserver_on_linux
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    script:
+        - echo "add trust host"
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - echo "deploying on $HOST"
+        - cd $PROJECT_FOLDER
+        - dotnet restore
+        - dotnet build --configuration $CONFIGURATION
+        - dotnet publish --configuration $CONFIGURATION --framework $FRAMEWORK --self-contained true --runtime linux-x64
+        - cd bin/$CONFIGURATION/$FRAMEWORK/linux-x64
+        - apt-get update -qy
+        - apt-get install -y lftp
+        - echo "push .net core to $HOST"
+        - lftp -e "mirror -R publish/ /var/www/$PUBLISH_FOLDER ; exit" -u $USERHOST,$PASSWORDHOST sftp://$HOST
+        - echo "done!"
+
+.deploy_angular_on_template: &deploy_angular_on
+    image: registry.gitlab.com/projects-experimenta/cre-tv:angular-cli-9.1.6
+    script:
+        - echo "add trust host"
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - cd $PROJECT_FOLDER
+        - echo "set ApiKey"
+        - cd src/environments
+        - sed -i s/"KeyValue"/"$APIKEY"/ environment.prod.ts
+        - cd ..
+        - cd ..
+        - npm i
+        - npx ng build --prod --output-path dist/$APP_NAME $BUILD_OPTIONS
+        - echo "push $APP_NAME Angular client to $HOST"
+        - lftp -e "set ftp:ssl-protect-data true ; mirror -R dist/$APP_NAME/ /var/www/$PUBLISH_FOLDER ; exit" -u $USERHOST,$PASSWORDHOST sftp://$HOST
+        - echo "done!"
+
+stages:
+    - build
+    - deploy
+
+# --------------------------------------------------------------
+#   STAGE --> BUILD
+# --------------------------------------------------------------
+
+build_WebApi.CaprezzoDigitale:
+    stage: build
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    only:
+        refs:
+            - master
+        changes:
+            - WebApi.CaprezzoDigitale/**/*
+    script:
+        - cd WebApi.CaprezzoDigitale
+        - dotnet restore
+        - dotnet build --configuration Debug
+    except:
+        changes:
+            - "*.md"
+
+build_public-client:
+    stage: build
+    cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+            - public-client/node_modules/
+    only:
+        refs:
+            - master
+        changes:
+            - public-client/**/*
+    image: registry.gitlab.com/projects-experimenta/cre-tv:angular-cli-9.1.6
+    script:
+        - cd public-client
+        - npm i
+        - ng build
+    except:
+        changes:
+            - "*.md"
+
+# --------------------------------------------------------------
+#   STAGE --> DEPLOY MASTER
+# --------------------------------------------------------------
+
+master_deploy_WebApi.CaprezzoDigitale:
+    stage: deploy
+    only:
+        refs:
+            - master
+        changes:
+            - WebApi.CaprezzoDigitale/**/*
+    variables:
+        CONFIGURATION: "Debug"
+        FRAMEWORK: "netcoreapp3.1"
+        PROJECT_FOLDER: "WebApi.CaprezzoDigitale"
+        PUBLISH_FOLDER: "CaprezzoDigitale.master/WebApi.CaprezzoDigitale"
+        HOST: $DEVHOST
+        USERHOST: $USERDEVHOST
+        PASSWORDHOST: $PASSWORDDEVHOST
+    <<: *deploy_webserver_on_linux
+    after_script:
+        # riavvio servizio
+        - apt-get install -y sshpass
+        - sshpass -p $PASSWORDDEVHOST ssh $USERDEVHOST@$DEVHOST systemctl restart kestrel_CaprezzoDigitale.master.service
+    except:
+        changes:
+            - "*.md"
+
+master_deploy_public-client:
+    stage: deploy
+    cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+            - public-client/node_modules/
+    only:
+        refs:
+            - master
+        changes:
+            - public-client/**/*
+    variables:
+        APP_NAME: public-client
+        BUILD_OPTIONS: "--source-map true"
+        PROJECT_FOLDER: "public-client"
+        PUBLISH_FOLDER: "CaprezzoDigitale.master/public-client"
+        HOST: $DEVHOST
+        USERHOST: $USERDEVHOST
+        PASSWORDHOST: $PASSWORDDEVHOST
+        APIKEY: $APIKEYDEV
+    <<: *deploy_angular_on
+    except:
+        changes:
+            - "*.md"
+
+# # --------------------------------------------------------------
+# #   STAGE --> DEPLOY STAGING
+# # --------------------------------------------------------------
+
+staging_deploy_WebApi.CaprezzoDigitale:
+    stage: deploy
+    only:
+        refs:
+            - staging
+    variables:
+        CONFIGURATION: "Debug"
+        FRAMEWORK: "netcoreapp3.1"
+        PROJECT_FOLDER: "WebApi.CaprezzoDigitale"
+        PUBLISH_FOLDER: "CaprezzoDigitale.staging/WebApi.CaprezzoDigitale"
+        HOST: $DEVHOST
+        USERHOST: $USERDEVHOST
+        PASSWORDHOST: $PASSWORDDEVHOST
+    <<: *deploy_webserver_on_linux
+    after_script:
+        # riavvio servizio
+        - apt-get install -y sshpass
+        - sshpass -p $PASSWORDDEVHOST ssh $USERDEVHOST@$DEVHOST systemctl restart kestrel_CaprezzoDigitale.staging.service
+    except:
+        changes:
+            - "*.md"
+
+staging_deploy_public-client:
+    stage: deploy
+    cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+            - public-client/node_modules/
+    only:
+        refs:
+            - staging
+    variables:
+        APP_NAME: public-client
+        BUILD_OPTIONS: ""
+        PROJECT_FOLDER: "public-client"
+        PUBLISH_FOLDER: "CaprezzoDigitale.staging/public-client"
+        HOST: $DEVHOST
+        USERHOST: $USERDEVHOST
+        PASSWORDHOST: $PASSWORDDEVHOST
+        APIKEY: $APIKEYDEV
+    <<: *deploy_angular_on
+    except:
+        changes:
+            - "*.md"
