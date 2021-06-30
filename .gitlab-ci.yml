@@ -35,10 +35,10 @@
         - cd $PROJECT_FOLDER
         - echo "set ApiKey"
         - cd src/environments
-        - sed -i s/"KeyValue"/"$APIKEY"/ environment.prod.ts
+        - sed -i s/KeyValue/$APIKEY/ environment.prod.ts
         - cd ..
         - cd js
-        - sed -i s/'KeyValue'/'$APIKEY'/ index.js
+        - sed -i s/KeyValue/$APIKEY/ index.js
         - cd ..
         - cd ..
         - npm i
