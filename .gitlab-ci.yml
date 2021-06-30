@@ -37,6 +37,9 @@
         - cd src/environments
         - sed -i s/"KeyValue"/"$APIKEY"/ environment.prod.ts
         - cd ..
+        - cd js
+        - sed -i s/'KeyValue'/'$APIKEY'/ index.js
+        - cd ..
         - cd ..
         - npm i
         - npx ng build --prod --output-path dist/$APP_NAME $BUILD_OPTIONS
