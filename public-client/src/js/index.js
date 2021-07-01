@@ -76,8 +76,23 @@ window.addEventListener('beforeinstallprompt', (e) => {
                     deferredPrompt = null;
                 });
 
+                // the number of .net ticks at the unix epoch
+                let epochTicks = 621355968000000000;
+                // there are 10000 .net ticks per millisecond
+                let ticksPerMillisecond = 10000;
+                let clientName = "public-client";
+                
+                // calculate the total number of .net ticks for your date
+                let ticks = (epochTicks + ((new Date().getTime()) * ticksPerMillisecond)).toString();
+                // calculate hash secret
+                let secret = CryptoJS.HmacSHA512(ticks.concat(clientName), 'KeyValue').toString();
+                
                 const Http = new XMLHttpRequest();
                 Http.open("POST", window.location.origin + '/api/Statistiche/InstallazioneApp');
+                // add custom header
+                Http.setRequestHeader('Client-Secret', secret);
+                Http.setRequestHeader('Client-Date', ticks);
+                Http.setRequestHeader('Client-Name', clientName);
                 Http.send();
             },
             callbackCancel: () => {

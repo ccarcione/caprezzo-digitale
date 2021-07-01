@@ -35,7 +35,10 @@
         - cd $PROJECT_FOLDER
         - echo "set ApiKey"
         - cd src/environments
-        - sed -i s/"KeyValue"/"$APIKEY"/ environment.prod.ts
+        - sed -i s/KeyValue/$APIKEY/ environment.prod.ts
+        - cd ..
+        - cd js
+        - sed -i s/KeyValue/$APIKEY/ index.js
         - cd ..
         - cd ..
         - npm i
@@ -169,10 +172,6 @@ staging_deploy_WebApi.CaprezzoDigitale:
 
 staging_deploy_public-client:
     stage: deploy
-    cache:
-        key: ${CI_COMMIT_REF_SLUG}
-        paths:
-            - public-client/node_modules/
     only:
         refs:
             - staging
@@ -185,6 +184,51 @@ staging_deploy_public-client:
         USERHOST: $USERDEVHOST
         PASSWORDHOST: $PASSWORDDEVHOST
         APIKEY: $APIKEYDEV
+    <<: *deploy_angular_on
+    except:
+        changes:
+            - "*.md"
+
+# # --------------------------------------------------------------
+# #   STAGE --> DEPLOY PRODUCTION
+# # --------------------------------------------------------------
+
+production_deploy_WebApi.CaprezzoDigitale:
+    stage: deploy
+    only:
+        refs:
+            - production
+    variables:
+        CONFIGURATION: "Release"
+        FRAMEWORK: "netcoreapp3.1"
+        PROJECT_FOLDER: "WebApi.CaprezzoDigitale"
+        PUBLISH_FOLDER: "CaprezzoDigitale.production/WebApi.CaprezzoDigitale"
+        HOST: $PRODHOST
+        USERHOST: $USERPRODHOST
+        PASSWORDHOST: $PASSWORDPRODHOST
+    <<: *deploy_webserver_on_linux
+    after_script:
+        # riavvio servizio
+        - apt-get install -y sshpass
+        - sshpass -p $PASSWORDPRODHOST ssh $USERPRODHOST@$PRODHOST systemctl restart kestrel_CaprezzoDigitale.production.service
+    except:
+        changes:
+            - "*.md"
+
+production_deploy_public-client:
+    stage: deploy
+    only:
+        refs:
+            - production
+    variables:
+        APP_NAME: public-client
+        BUILD_OPTIONS: ""
+        PROJECT_FOLDER: "public-client"
+        PUBLISH_FOLDER: "CaprezzoDigitale.production/public-client"
+        HOST: $PRODHOST
+        USERHOST: $USERPRODHOST
+        PASSWORDHOST: $PASSWORDPRODHOST
+        APIKEY: $APIKEYPROD
     <<: *deploy_angular_on
     except:
         changes:
