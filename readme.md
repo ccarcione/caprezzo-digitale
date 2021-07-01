@@ -1,34 +1,35 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="immagini/logo.png" alt="Logo" width="270" height="117">
+  <img src="public-client\src\assets\images\icon-original.png" alt="Logo" width="270">
 
-  <h3 align="center">Caprezzo X Tutti</h3>
+  <h3 align="center">Caprezzo Digitale</h3>
 
   <p align="center">
     Servizio .Net Core - PWA dedicato a una più corretta ed efficacia comunicazione con il cittadino.
     <br />
     <br />
-    <strong>« Esplora la documentazione presente nel repository »</strong>
+    <a href="https://drive.google.com/drive/folders/180SqtIJMT_oJDoRXu5TmDu0psUMPP1iQ?usp=sharing"><strong>« Esplora la documentazione presente in Drive »</strong></a>
     <br />
     oppure
     <br />
-    consulta le API esposte dal servizio tramite <a href="https://caprezzoxtutti.it/api/api-docs/index.html"><strong>« Swagger API docs »</strong></a>
+    consulta le API esposte dal servizio tramite <a href="https://caprezzodigitale.master.experimenta.cloud/api-docs/index.html"><strong>« Swagger API docs - master »</strong></a>
     <br />
     <br />
-    <a href="https://caprezzoxtutti.master.experimenta.cloud">Ambiente di Sviluppo</a>
+    <a href="https://caprezzodigitale.master.experimenta.cloud">Ambiente di Sviluppo (master)</a>
     ·
-    <a href="https://caprezzoxtutti.master.experimenta.cloud">Ambiente di Test</a>
+    <a href="https://caprezzodigitale.staging.experimenta.cloud">Ambiente di Test (staging)</a>
+    ·
+    <a href="https://caprezzodigitale.it">Ambiente di produzione</a>
     ·
     <a href="SEGNALA_BUG.md">Segnala Bug</a>
     ·
     <a href="https://caprezzoxtutti.it/feedback">Richiedi Feature</a>
-    .
-    <a hrfe="https://drive.google.com/drive/folders/180SqtIJMT_oJDoRXu5TmDu0psUMPP1iQ?usp=sharing">Documentazione GDrive</a>
   </p>
+
 </p>
 
-# Caprezzo X Tutti
+# Caprezzo Digitale
 
 ## Introduzione
 
@@ -130,13 +131,16 @@ qui mettere vari screen dell'app (gif)
 
 ## Built With
 
-Angular UI frontend
+« Stack .Net core + Node »
+
+Framework frontend
 * [Angular CLI](https://cli.angular.io/)
 * [Material Design components for Angular](https://material.angular.io/)
 
 
-.Net Core backend
+Framework backend
 * [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet/3.1)
+* [Entity Framework Core](https://docs.microsoft.com/it-it/ef/)
 * [PostgreSQL](https://www.postgresql.org/)
 
 ## Getting Started
@@ -170,4 +174,4 @@ Carcione Christian - [@Carcione](https://gitlab.com/Carcione) - carcione.christi
 
 Jessica Sala - [@jessicasala](https://gitlab.com/jessicasala) - jesssicasala@gmail.com
 
-Project Link: [GitLab Repository](https://gitlab.com/projects-experimenta/app-comune
+Project Link: [GitLab Repository](https://gitlab.com/projects-experimenta/caprezzo-digitale)
