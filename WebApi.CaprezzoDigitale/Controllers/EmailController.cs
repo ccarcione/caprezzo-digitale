@@ -41,7 +41,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
 ");
             if (saveFeedback)
             {
-                _context.Feedbacks.Add(emailFeedback);
+                _context.Feedback.Add(emailFeedback);
                 _context.SaveChanges();
             }
         }
