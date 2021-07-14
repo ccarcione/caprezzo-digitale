@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using EmailLibTool;
+using EmailTools;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -50,26 +50,9 @@ namespace WebApi.CaprezzoDigitale
                 });
             });
 
-            services.AddSingleton<EmailSend>(x => new EmailSend(
+            services.AddSingleton<ETools>(x => new ETools(Configuration.GetSection("EmailTools").Get<Configuration>()));
 
-                smtpServer: Configuration.GetValue<string>("EmailConfiguration:SmtpServer"),
-                smtpPort: Configuration.GetValue<int>("EmailConfiguration:SmtpPort"),
-                useSsl: Configuration.GetValue<bool>("EmailConfiguration:UseSsl"),
-
-                emailMittente: Configuration.GetValue<string>("EmailConfiguration:Mittente"),
-                smtpUsername: Configuration.GetValue<string>("EmailConfiguration:SmtpUsername"),
-                smtpPassword: Configuration.GetValue<string>("EmailConfiguration:SmtpPassword"),
-                authenticate: Configuration.GetValue<bool>("EmailConfiguration:Authenticate"),
-
-                aliasName: Configuration.GetValue<string>("EmailConfiguration:AliasName"),
-
-                recoveryEmail: Configuration.GetValue<bool>("EmailConfiguration:RecoveryFailedSendEmail"),
-                recoveryEmailPath: Configuration.GetValue<string>("EmailConfiguration:RecoveryFailedSendEmailPath"),
-                backupSendEmail: Configuration.GetValue<bool>("EmailConfiguration:BackupSendEmail"),
-                backupSendEmailPath: Configuration.GetValue<string>("EmailConfiguration:BackupSendEmailPath")
-                ));
-
-            services.AddSingleton(x => new Options()
+            services.AddSingleton(x => new WebApi.CaprezzoDigitale.Models.Options()
             {
                 WebApiOptions = Configuration.GetSection("WebApi.caprezzo_digitale.Models.Options").Get<Dictionary<string, string>>(),
                 EmailDestinatariFeedback = Configuration.GetSection("WebApi.caprezzo_digitale.Models.Options.EmailDestinatariFeedback").Get<IEnumerable<string>>(),

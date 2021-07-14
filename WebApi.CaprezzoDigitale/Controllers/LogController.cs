@@ -1,4 +1,4 @@
-﻿using EmailLibTool;
+﻿using EmailTools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
@@ -14,11 +14,11 @@ namespace WebApi.CaprezzoDigitale.Controllers
     public class LogController : ControllerBase
     {
         private readonly ILogger<LogController> _logger;
-        private readonly EmailSend _emailSend;
+        private readonly ETools _emailTools;
         private readonly Models.Options _options;
-        public LogController(ILogger<LogController> logger, EmailSend emailSend, Models.Options options)
+        public LogController(ILogger<LogController> logger, ETools emailTools, Models.Options options)
         {
-            _emailSend = emailSend;
+            _emailTools = emailTools;
             _options = options;
             _logger = logger;
         }
@@ -26,7 +26,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Information")]
         public ActionResult Information([FromBody] JObject clientInformation)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Information - Caprezzo Digitale",
                 clientInformation.ToString()
@@ -38,7 +38,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Debug")]
         public ActionResult Debug([FromBody] JObject clientDebug)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Debug - Caprezzo Digitale",
                 clientDebug.ToString()
@@ -50,7 +50,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Trace")]
         public ActionResult Trace([FromBody] JObject clientTrace)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Trace - Caprezzo Digitale",
                 clientTrace.ToString()
@@ -62,7 +62,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Critical")]
         public ActionResult Critical([FromBody] JObject clientCritical)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Critical - Caprezzo Digitale",
                 clientCritical.ToString()
@@ -74,7 +74,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Warning")]
         public ActionResult Warning([FromBody] JObject clientWarning)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Warning - Caprezzo Digitale",
                 clientWarning.ToString()
@@ -86,7 +86,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpPost("Error")]
         public ActionResult Error([FromBody] JObject clientError)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariLog,
                 "Log Error - Caprezzo Digitale",
                 clientError.ToString()

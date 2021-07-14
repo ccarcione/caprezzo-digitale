@@ -15,6 +15,8 @@ export class PrivacyPolicyComponent implements OnInit, OnDestroy, ShellData {
   privacyPolicyITA: string;
   privacyPolicyENG: string;
   privacyPolicyDE: string;
+  privacyPolicyESP: string;
+  privacyPolicyFR: string;
 
   constructor(private loadingService: LoadingService,
     private assetsService: AssetsService,
@@ -29,6 +31,8 @@ export class PrivacyPolicyComponent implements OnInit, OnDestroy, ShellData {
     this.privacyPolicyITA = await this.assetsService.getPrivacyPolicy('ita');
     this.privacyPolicyENG = await this.assetsService.getPrivacyPolicy('eng');
     this.privacyPolicyDE = await this.assetsService.getPrivacyPolicy('de');
+    this.privacyPolicyESP = await this.assetsService.getPrivacyPolicy('esp');
+    this.privacyPolicyFR = await this.assetsService.getPrivacyPolicy('fr');
     this.loadingService.setStatusLoadingApp(false);
   }
 

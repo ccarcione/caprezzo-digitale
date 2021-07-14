@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="public-client\src\assets\images\icon-original.png" alt="Logo" width="270">
+  <img src="public-client/src/assets/images/icon-original.png" alt="Logo" width="270">
 
   <h3 align="center">Caprezzo Digitale</h3>
 
@@ -24,7 +24,7 @@
     ·
     <a href="SEGNALA_BUG.md">Segnala Bug</a>
     ·
-    <a href="https://caprezzoxtutti.it/feedback">Richiedi Feature</a>
+    <a href="https://caprezzodigitale.it/feedback">Richiedi Feature</a>
   </p>
 
 </p>
@@ -53,7 +53,7 @@ In questa sezione vedrò di documentare e spiegare al meglio ogni funzione offer
 - L'utilizzo del servizio viene offerto in modo gratuito
 - Il servizio può essere consultato da qualsiasi dispositivo tramite i browser più popolari oppure installato sul proprio device come una applicazione nativa (attenzione: alcuni sistemi operativi mostrano limitazioni)
 - In futuro verrà sviluppato un servizio di identità per garantire ad alcuni utenti l'utilizzo del servizio
-- Esiste una informativa sulla privacy consultabile qui --> [Privacy Policy](https://caprezzoxtutti.it/privacy-policy)
+- Esiste una informativa sulla privacy consultabile qui --> [Privacy Policy](https://www.privacypolicies.com/live/8ec1de52-478e-4f83-b906-7881b027a63d)
 
 ### Bacheca del paese
 
@@ -148,7 +148,7 @@ Framework backend
 Per ottenere una copia locale attiva e funzionante, segui questi semplici passaggi --> [HOW TO INSTALL](/HOW_TO_INSTALL.md)
 
 ## Roadmap
-Per maggiori info consultare la [Board](https://gitlab.com/projects-experimenta/app-comune/-/boards/1949143) e le [Milestone](https://gitlab.com/projects-experimenta/app-comune/-/milestones) del repository.
+Per maggiori info consultare la [Board](https://gitlab.com/projects-experimenta/caprezzo-digitale/-/boards/1949143) e le [Milestone](https://gitlab.com/projects-experimenta/caprezzo-digitale/-/milestones) del repository.
 
 ## Contributing
 
@@ -156,7 +156,7 @@ Per maggiori info consultare la [Board](https://gitlab.com/projects-experimenta/
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Merge Request
+5. Open a [Merge Request](https://gitlab.com/projects-experimenta/caprezzo-digitale/-/merge_requests/new)
 
 ## License
 
@@ -166,7 +166,7 @@ Invito a leggere e comprendere --> [Problema del free rider](https://it.wikipedi
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/projects-experimenta/app-comune/-/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/projects-experimenta/caprezzo-digitale/-/releases). 
 
 ## Autori
 
