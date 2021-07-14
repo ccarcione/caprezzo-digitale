@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="nuget.config" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="EmailLibTool" Version="1.4.4" />
+    <PackageReference Include="EmailTools" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
       <PrivateAssets>all</PrivateAssets>

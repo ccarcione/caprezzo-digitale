@@ -1,4 +1,4 @@
-﻿using EmailLibTool;
+﻿using EmailTools;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using WebApi.CaprezzoDigitale.Filters;
@@ -12,22 +12,22 @@ namespace WebApi.CaprezzoDigitale.Controllers
     public class EmailController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly EmailSend _emailSend;
+        private readonly ETools _emailTools;
         private readonly Models.Options _options;
 
         public EmailController(ApplicationDbContext context,
-            EmailSend emailSend,
+            ETools emailTools,
             Models.Options options)
         {
             _context = context;
-            _emailSend = emailSend;
+            _emailTools = emailTools;
             _options = options;
         }
 
         [HttpPost]
         public void Post([FromBody] EmailFeedback emailFeedback, [FromQuery] bool saveFeedback)
         {
-            _emailSend.SendEmailAsync(
+            _emailTools.SendEmailAsync(
                 _options.EmailDestinatariFeedback,
                 "Nuovo Feedback - Caprezzo Digitale",
                 @$"<b>Nome</b>: {emailFeedback.Nome}
