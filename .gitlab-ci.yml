@@ -151,8 +151,7 @@ master_deploy_public-client:
 staging_deploy_WebApi.CaprezzoDigitale:
     stage: deploy
     only:
-        refs:
-            - staging
+        - staging
     variables:
         CONFIGURATION: "Debug"
         FRAMEWORK: "netcoreapp3.1"
@@ -173,8 +172,7 @@ staging_deploy_WebApi.CaprezzoDigitale:
 staging_deploy_public-client:
     stage: deploy
     only:
-        refs:
-            - staging
+        - staging
     variables:
         APP_NAME: public-client
         BUILD_OPTIONS: ""
@@ -196,8 +194,7 @@ staging_deploy_public-client:
 production_deploy_WebApi.CaprezzoDigitale:
     stage: deploy
     only:
-        refs:
-            - production
+        - production
     variables:
         CONFIGURATION: "Release"
         FRAMEWORK: "netcoreapp3.1"
@@ -218,8 +215,7 @@ production_deploy_WebApi.CaprezzoDigitale:
 production_deploy_public-client:
     stage: deploy
     only:
-        refs:
-            - production
+        - production
     variables:
         APP_NAME: public-client
         BUILD_OPTIONS: ""
