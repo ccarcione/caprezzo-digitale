@@ -34,7 +34,7 @@ namespace WebApi.CaprezzoDigitale.Models
         public DbSet<Messaggio> Messaggi { get; set; }
         public DbSet<Allegato> Allegati { get; set; }
         public DbSet<TipoMessaggio> TipiMessaggio { get; set; }
-        public DbSet<EmailFeedback> Feedbacks { get; set; }
+        public DbSet<EmailFeedback> Feedback { get; set; }
         public DbSet<Statistica> Statistiche { get; set; }
         public DbSet<TipoStatistica> TipiStatistica { get; set; }
         public DbSet<BollettinoArpa> BollettiniArpa { get; set; }
