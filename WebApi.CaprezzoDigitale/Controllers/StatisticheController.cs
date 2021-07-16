@@ -25,7 +25,6 @@ namespace WebApi.CaprezzoDigitale.Controllers
             {
                 Guid = guid,
                 TipoStatisticaId = (int)TipiStatistica.AperturaApp,
-                Data = DateTime.Now,
                 Valore = "1"
             });
             try
@@ -45,7 +44,6 @@ namespace WebApi.CaprezzoDigitale.Controllers
             {
                 Guid = guid,
                 TipoStatisticaId = (int)TipiStatistica.InstallazioneApp,
-                Data = DateTime.Now,
                 Valore = "1"
             });
             try
