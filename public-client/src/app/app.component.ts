@@ -6,6 +6,7 @@ import { ConnectionService } from 'ngx-connection-service';
 import { StatisticheService } from './statistiche.service';
 import { AssetsService, VersionJson } from './assets.service';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-root',
@@ -55,6 +56,11 @@ export class AppComponent implements OnInit {
           }
         });
       }, this.heartbeatOption);
+
+      // controlla e se non presente genera guid in local storage.
+      if (!localStorage.getItem('device-guid')) {
+        localStorage.setItem('device-guid', uuidv4());
+      }
     }
   
   async ngOnInit(): Promise<void> {
