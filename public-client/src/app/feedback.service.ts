@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Feedback } from './model/Feedback';
+import { Feedback } from './model/feedback';
 
 const url = "api/Feedback";
 
