@@ -12,6 +12,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) { }
 
   async save(feedback: Feedback) {
+    feedback.guid = localStorage.getItem('device-guid');
     await this.http.post(url, feedback).toPromise();
   }
 }

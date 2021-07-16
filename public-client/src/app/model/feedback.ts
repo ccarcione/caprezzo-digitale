@@ -1,4 +1,5 @@
 export class Feedback {
+    guid: string;
     nome: string;
     messaggio: string;
     rating: number;
