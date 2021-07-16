@@ -6,6 +6,7 @@ namespace WebApi.CaprezzoDigitale.Models
     public class Statistica
     {
         public long Id { get; set; }
+        public string Guid { get; set; }
         public short TipoStatisticaId { get; set; }
         public TipoStatistica TipoStatistica { get; set; }
         public string Valore { get; set; }

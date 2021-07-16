@@ -29,12 +29,20 @@ namespace WebApi.CaprezzoDigitale.Models
                 .HasOne(p => p.TipoStatistica)
                 .WithMany(b => b.Statistiche)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Statistica>()
+                .Property(p => p.Data)
+                .HasDefaultValueSql("now()");
+
+            modelBuilder.Entity<Feedback>()
+                .Property(p => p.Data)
+                .HasDefaultValueSql("now()");
         }
 
         public DbSet<Messaggio> Messaggi { get; set; }
         public DbSet<Allegato> Allegati { get; set; }
         public DbSet<TipoMessaggio> TipiMessaggio { get; set; }
-        public DbSet<EmailFeedback> Feedback { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
         public DbSet<Statistica> Statistiche { get; set; }
         public DbSet<TipoStatistica> TipiStatistica { get; set; }
         public DbSet<BollettinoArpa> BollettiniArpa { get; set; }
