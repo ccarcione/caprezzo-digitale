@@ -1,7 +1,6 @@
 import { ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Gallery } from 'angular-gallery';
-import { NgxMasonryComponent, NgxMasonryOptions } from 'ngx-masonry';
+import { Config, LayoutStyle, Media } from 'ng-opengallery';
 import { LoadingService } from 'src/app/layout/loading/loading.service';
 import { ShellData, ShellService } from 'src/app/layout/shell/shell.service';
 import { PageInfo } from 'src/app/model/pagination-result';
@@ -16,19 +15,24 @@ export class GalleriaComponent implements OnInit, OnDestroy, ShellData {
 
   isLoadingMoreImage: boolean = false;
 
-  public masonryOptions: NgxMasonryOptions = {
-    gutter: 10,
-  };
-
   @ViewChild('titleContainer', { static: true }) titleContainer: ElementRef;
-  @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
 
   pagination: PageInfo = new PageInfo();
-  masonryImages = [];
+  imagesData = [];
   pageSize = 15;
 
-  constructor(private gallery: Gallery,
-    private galleriaService: GalleriaService,
+  config: Config = {
+    diaporamaDuration: 3,
+    layout: LayoutStyle.SIMPLE,
+    prefMediaHeight: 250,
+    spacing: 2,
+    viewerEnabled: true,
+    viewerFullsize: true,
+    enableAutoPlay: true,
+    effectClass: null
+  }
+
+  constructor(private galleriaService: GalleriaService,
     private loadingService: LoadingService,
     private ss: ShellService) { }
 
@@ -43,7 +47,7 @@ export class GalleriaComponent implements OnInit, OnDestroy, ShellData {
     this.pagination.pageSize = this.pageSize;
     const paginationResult = await this.galleriaService.getGalleria(this.pagination);
     setTimeout(() => { this.loadingService.setStatusLoadingApp(false) }, 2000);
-    this.masonryImages = paginationResult.data;
+    this.imagesData = paginationResult.data.map(x => new Media(x, ''));
     this.pagination = paginationResult.pagination;
   }
 
@@ -51,37 +55,24 @@ export class GalleriaComponent implements OnInit, OnDestroy, ShellData {
     this.isLoadingMoreImage = true;
     this.pagination.currentPage++;
     const paginationResult = await this.galleriaService.getGalleria(this.pagination);
-    this.masonryImages.push(...paginationResult.data);
+    this.imagesData.push(...paginationResult.data.map(x => new Media(x, '')));
     this.pagination = paginationResult.pagination;
+    this.isLoadingMoreImage = false;
   }
 
-  itemsLoaded() {
-    console.log('itemsloaded');
+  onChange(event) {
+    console.log('CHANGE event: ' + event);
   }
 
-  showGallery(index: number) {
-    let images = [];
-    this.masonryImages.forEach(x => images.push({ path: x }));
-
-    const prop = {
-        images,
-        index
-    };
-    this.gallery.load(prop);
+  onError(event) {
+    console.log('ERROR event: ' + event);
   }
 
-  checkStopLoading()
-  {
-    var images = document
-      .getElementById('galleria-masonryImages')
-      .getElementsByTagName('img');
-    var completeList = [];
-    for(var i = 0; i < images.length; i++) {
-      completeList.push(images[i].complete);
-    }
-    if( completeList.filter(x => x == false).length == 0) {
-      setTimeout(() => { this.loadingService.setStatusLoadingApp(false) }, 500);
-      setTimeout(() => { this.isLoadingMoreImage = false; }, 500);
-    }
+  onSelection(event) {
+    console.log('SELECTION event: ' + event);
+  }
+
+  onOpen(event) {
+    console.log('OPEN event: ' + event);
   }
 }
