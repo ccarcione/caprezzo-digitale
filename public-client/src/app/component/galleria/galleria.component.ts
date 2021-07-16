@@ -61,18 +61,24 @@ export class GalleriaComponent implements OnInit, OnDestroy, ShellData {
   }
 
   onChange(event) {
-    console.log('CHANGE event: ' + event);
+    console.log('CHANGE event:');
+    console.log(event);
   }
-
+  
   onError(event) {
-    console.log('ERROR event: ' + event);
+    console.log('ERROR event:');
+    console.log(event);
   }
-
+  
   onSelection(event) {
-    console.log('SELECTION event: ' + event);
+    console.log('SELECTION event:');
+    console.log(event);
+    this.ss.forceCloseDrawer();
   }
-
+  
   onOpen(event) {
-    console.log('OPEN event: ' + event);
+    console.log('OPEN event:');
+    console.log(event);
+    this.ss.resetBehaviorOpenProperyDrawer();
   }
 }

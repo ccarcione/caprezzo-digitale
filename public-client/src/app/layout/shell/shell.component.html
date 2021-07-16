@@ -29,7 +29,7 @@
 </ng-container>
 
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav mat-elevation-z4" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-sidenav #drawer class="sidenav mat-elevation-z4" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="isForceOpenDrawer != null ? isForceOpenDrawer : !(isHandset$ | async)">
         <ng-content *ngIf="!nav; else nav" select="[shell-nav]"></ng-content>
         <!-- <div class="user-menu">
             <img src="assets/images/icon-original.png" alt="">
