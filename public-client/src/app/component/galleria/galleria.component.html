@@ -1,12 +1,16 @@
 <ng-template #titleContainer>
   <span>Galleria</span>
 </ng-template>
+
 <div>
-  <ngx-masonry id="galleria-masonryImages" class="masonry-style" [options]="masonryOptions" [ordered]="true" (itemsLoaded)="itemsLoaded()">
-    <div ngxMasonryItem [prepend]="false" *ngFor="let image of masonryImages;index as idx" class="item">
-      <img (load)="checkStopLoading()" [src]="image" (click)="showGallery(idx)">
-    </div>
-  </ngx-masonry>
+  <ng-opengallery
+    [datasource]='this.imagesData'
+    [config]='this.config'
+    (change)='onChange($event)'
+    (error)='onError($event)'
+    (selection)='onSelection($event)'
+    (open)='onOpen($event)'
+  ></ng-opengallery>
 
   <app-loading *ngIf="isLoadingMoreImage" class="loading-more-images"></app-loading>
   <div class="more-image-contains-button">

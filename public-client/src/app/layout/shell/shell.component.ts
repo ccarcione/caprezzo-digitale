@@ -1,5 +1,5 @@
 import { Component, OnInit, ContentChild, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {ShellService} from './shell.service'
 import { MatDrawer } from '@angular/material/sidenav';
@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 })
 export class ShellComponent implements OnInit {
   versionJson: VersionJson = new VersionJson();
+  openPropertyDrawer: boolean;
+  isForceOpenDrawer: boolean;
   
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -38,9 +40,10 @@ export class ShellComponent implements OnInit {
       // con il segmento della pagina).
       this.router.navigateByUrl('/');
     }
-
-  async ngOnInit() {
-    this.versionJson = await this.assetsService.getVersion();
+    
+    async ngOnInit() {
+      this.shellService.isForceOpen$.subscribe(x => this.isForceOpenDrawer = x);
+      this.versionJson = await this.assetsService.getVersion();
   }
 
   onNavClick(drawer: MatDrawer) {
