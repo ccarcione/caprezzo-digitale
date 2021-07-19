@@ -86,9 +86,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
                 let ticks = (epochTicks + ((new Date().getTime()) * ticksPerMillisecond)).toString();
                 // calculate hash secret
                 let secret = CryptoJS.HmacSHA512(ticks.concat(clientName), 'KeyValue').toString();
-                
+
                 const Http = new XMLHttpRequest();
-                Http.open("POST", window.location.origin + '/api/Statistiche/InstallazioneApp');
+                Http.open("POST", window.location.origin + '/api/Statistiche/InstallazioneApp/' + localStorage.getItem('device-guid'));
                 // add custom header
                 Http.setRequestHeader('Client-Secret', secret);
                 Http.setRequestHeader('Client-Date', ticks);

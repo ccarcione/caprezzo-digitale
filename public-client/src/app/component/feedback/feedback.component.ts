@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { EmailFeedback } from '../../model/emailFeedback';
-import { EmailService } from '../../email.service';
+import { Feedback } from '../../model/feedback';
+import { FeedbackService } from '../../feedback.service';
 import { LoadingService } from 'src/app/layout/loading/loading.service';
 
 @Component({
@@ -11,26 +11,25 @@ import { LoadingService } from 'src/app/layout/loading/loading.service';
 })
 export class FeedbackComponent implements OnInit {
 
-  emailFeedback: EmailFeedback = new EmailFeedback();
+  feedback: Feedback = new Feedback();
 
   constructor(private toastrService: ToastrService,
-    private emailService: EmailService,
+    private feedbackService: FeedbackService,
     private loadingService: LoadingService) { }
 
   ngOnInit(): void {
   }
 
-  async inviaEmailFeedback() {
-    if (!this.emailFeedback.rating)
+  async inviaFeedback() {
+    if (!this.feedback.rating)
     {
       this.toastrService.warning('Dai una valutazione generale all\'app selezionando le stelle');
       return;
     }
 
-    // invia email
     // salva recensione su db
     this.loadingService.setStatusLoadingApp(true);
-    await this.emailService.sendEmail(this.emailFeedback, true);
+    await this.feedbackService.save(this.feedback);
     this.loadingService.setStatusLoadingApp(false);
 
     // messaggio ringraziamento
@@ -40,6 +39,6 @@ export class FeedbackComponent implements OnInit {
   }
 
   updateRating(event) {
-    this.emailFeedback.rating = event.rating;
+    this.feedback.rating = event.rating;
   }
 }

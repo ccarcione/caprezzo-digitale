@@ -18,13 +18,13 @@ namespace WebApi.CaprezzoDigitale.Controllers
             _context = context;
         }
 
-        [HttpPost("AperturaApp")]
-        public void AperturaApp()
+        [HttpPost("AperturaApp/{guid}")]
+        public void AperturaApp(string guid)
         {
             _context.Statistiche.Add(new Statistica()
             {
+                Guid = guid,
                 TipoStatisticaId = (int)TipiStatistica.AperturaApp,
-                Data = DateTime.Now,
                 Valore = "1"
             });
             try
@@ -37,13 +37,13 @@ namespace WebApi.CaprezzoDigitale.Controllers
             }
         }
 
-        [HttpPost("InstallazioneApp")]
-        public void InstallazioneApp()
+        [HttpPost("InstallazioneApp/{guid}")]
+        public void InstallazioneApp(string guid)
         {
             _context.Statistiche.Add(new Statistica()
             {
+                Guid = guid,
                 TipoStatisticaId = (int)TipiStatistica.InstallazioneApp,
-                Data = DateTime.Now,
                 Valore = "1"
             });
             try
