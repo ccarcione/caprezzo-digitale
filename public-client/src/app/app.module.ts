@@ -49,6 +49,7 @@ import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-polic
 import { TeamPeopleComponent } from './component/team-people/team-people.component';
 import { GlobalErrorHandler } from './global-error-handler';
 import { ApiKeyAuthInterceptor } from './interceptor/ApiKeyAuth.interceptor';
+import { NgOpengalleryModule } from 'ng-opengallery';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { ApiKeyAuthInterceptor } from './interceptor/ApiKeyAuth.interceptor';
     MatInputModule,
     StarRatingModule.forRoot(),
     MatTabsModule,
+    NgOpengalleryModule,
   ],
   providers: [
     {
