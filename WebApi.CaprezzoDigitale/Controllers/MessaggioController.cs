@@ -31,7 +31,10 @@ namespace WebApi.CaprezzoDigitale.Controllers
                 .Include(i => i.Allegati)
                 .OrderByDescending(o => o.DataPubblicazione)
                 .ToListAsync();
-            messaggi.ForEach(f => f.UrlImmagine = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{f.UrlImmagine}");
+            messaggi
+                .Where(w => !string.IsNullOrWhiteSpace(w.UrlImmagine))
+                .ToList()
+                .ForEach(f => f.UrlImmagine = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{f.UrlImmagine}");
             messaggi.ForEach(m => m.Allegati.ForEach(f =>
                 f.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{f.FilePath}"
             ));
