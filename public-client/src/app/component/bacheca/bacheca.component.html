@@ -5,7 +5,7 @@
   <div ngxMasonryItem [prepend]="message[0]" *ngFor="let message of messages" class="item" >
     <div class="card">
       <div class="testata">
-        <div class="foto">
+        <div *ngIf="message.urlImmagine != null" class="foto">
           <img src="{{message.urlImmagine}}" (click)="showImage(message.urlImmagine)">
         </div>
         <div class="titoli">
@@ -16,7 +16,7 @@
           </div>
           <h3 *ngIf="message.sottotitolo != null">{{message.sottotitolo}}</h3>
           <h4>{{message.dataPubblicazione | date: 'dd MMM. yyyy hh:mm'}}</h4>
-          <mat-divider style="padding-bottom: 16px;"></mat-divider>
+          <mat-divider *ngIf="message.testo != null" style="padding-bottom: 16px;"></mat-divider>
           <p [ngClass]="message.showMore ? 'testo-completo' : 'testo'">
             {{message.testo}}
           </p>
