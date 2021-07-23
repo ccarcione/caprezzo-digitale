@@ -50,6 +50,8 @@ import { TeamPeopleComponent } from './component/team-people/team-people.compone
 import { GlobalErrorHandler } from './global-error-handler';
 import { ApiKeyAuthInterceptor } from './interceptor/ApiKeyAuth.interceptor';
 import { NgOpengalleryModule } from 'ng-opengallery';
+import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { NgOpengalleryModule } from 'ng-opengallery';
     ChangelogComponent,
     PrivacyPolicyComponent,
     TeamPeopleComponent,
+    PdfViewerComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +114,7 @@ import { NgOpengalleryModule } from 'ng-opengallery';
     StarRatingModule.forRoot(),
     MatTabsModule,
     NgOpengalleryModule,
+    NgxExtendedPdfViewerModule,
   ],
   providers: [
     {

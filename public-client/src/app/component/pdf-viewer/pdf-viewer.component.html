@@ -1,0 +1,26 @@
+<ngx-extended-pdf-viewer
+  #pdfViewer
+  [src]="filePath"
+  [height]="'100%'"
+  backgroundColor="#ffffff"
+  [useBrowserLocale]="true"
+  [mobileFriendlyZoom]="'150%'"
+  [showSecondaryToolbarButton]="false"
+  language="it-IT"
+  [customToolbar]="additionalButtons"
+>
+</ngx-extended-pdf-viewer>
+
+<ng-template #additionalButtons>
+  <div id="toolbarViewer">
+    <div id="toolbarViewerLeft">
+      <pdf-paging-area></pdf-paging-area>
+    </div>
+    <div id="toolbarViewerRight">
+      <pdf-print></pdf-print>
+      <pdf-download></pdf-download>
+      <div class="verticalToolbarSeparator hiddenSmallView"></div>
+    </div>
+    <pdf-zoom-toolbar ></pdf-zoom-toolbar>
+  </div>
+</ng-template>
