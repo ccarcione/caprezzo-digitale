@@ -75,23 +75,23 @@ namespace WebApi.CaprezzoDigitale
                     if (context.Messaggi.FirstOrDefault(m => m.Titolo == f.Titolo && m.DataPubblicazione == f.DataPubblicazione) == null)
                     {
                         // se l'immagine in seed è un link scaricala.
-                        if (Regex.IsMatch(f.UrlImmagine, "(^http://)|(^https://)", RegexOptions.IgnoreCase))
+                        if (Regex.IsMatch(f.UrlImmagineCopertina, "(^http://)|(^https://)", RegexOptions.IgnoreCase))
                         {
                             // scarica immagine nella giusta cartella
                             string filename = new Regex(new string(Path.GetInvalidFileNameChars()))
-                                .Replace(Path.GetFileName(f.UrlImmagine), string.Empty);
-                            SeedMockData.DownloadRemoteImageFile(f.UrlImmagine, Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), filename));
+                                .Replace(Path.GetFileName(f.UrlImmagineCopertina), string.Empty);
+                            SeedMockData.DownloadRemoteImageFile(f.UrlImmagineCopertina, Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), filename));
                             
                             // sistema UrlImmagine del messaggio
-                            f.UrlImmagine = filename;
+                            f.UrlImmagineCopertina = filename;
                         }
-                        else if (!string.IsNullOrWhiteSpace(f.UrlImmagine))
+                        else if (!string.IsNullOrWhiteSpace(f.UrlImmagineCopertina))
                         {
                             // altrimenti procedi normalmente.
                             File.Copy(
-                                Path.Combine(Directory.GetParent(mockMessaggi_Path).FullName, f.UrlImmagine),
-                                Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), f.UrlImmagine), true);
-                            f.UrlImmagine = Path.GetFileName(f.UrlImmagine);
+                                Path.Combine(Directory.GetParent(mockMessaggi_Path).FullName, f.UrlImmagineCopertina),
+                                Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), f.UrlImmagineCopertina), true);
+                            f.UrlImmagineCopertina = Path.GetFileName(f.UrlImmagineCopertina);
                         }
 
                         // seed allegati messaggio

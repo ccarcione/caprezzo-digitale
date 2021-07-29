@@ -12,7 +12,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { BachecaComponent } from './component/bacheca/bacheca.component';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
-import { MessaggioComponent } from './component/messaggio/messaggio.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgxMasonryModule } from 'ngx-masonry';
@@ -23,7 +22,6 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GalleriaComponent } from './component/galleria/galleria.component';
-import { IvyGalleryModule } from 'angular-gallery';
 import { AllerteComponent } from './component/allerte/allerte.component';
 import { EventiComponent } from './component/eventi/eventi.component';
 import { ServizioNotificheComponent } from './component/servizio-notifiche/servizio-notifiche.component';
@@ -50,6 +48,9 @@ import { TeamPeopleComponent } from './component/team-people/team-people.compone
 import { GlobalErrorHandler } from './global-error-handler';
 import { ApiKeyAuthInterceptor } from './interceptor/ApiKeyAuth.interceptor';
 import { NgOpengalleryModule } from 'ng-opengallery';
+import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,6 @@ import { NgOpengalleryModule } from 'ng-opengallery';
     ShellComponent,
     ShellMenuDirective,
     BachecaComponent,
-    MessaggioComponent,
     LoadingComponent,
     GalleriaComponent,
     AllerteComponent,
@@ -77,6 +77,7 @@ import { NgOpengalleryModule } from 'ng-opengallery';
     ChangelogComponent,
     PrivacyPolicyComponent,
     TeamPeopleComponent,
+    PdfViewerComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +103,6 @@ import { NgOpengalleryModule } from 'ng-opengallery';
       disableTimeOut: false
     }), // ToastrModule added
     MatSnackBarModule,
-    IvyGalleryModule,
     ConnectionServiceModule,
     FormsModule,
     ReactiveFormsModule,
@@ -111,6 +111,8 @@ import { NgOpengalleryModule } from 'ng-opengallery';
     StarRatingModule.forRoot(),
     MatTabsModule,
     NgOpengalleryModule,
+    NgxExtendedPdfViewerModule,
+    MatDialogModule,
   ],
   providers: [
     {
