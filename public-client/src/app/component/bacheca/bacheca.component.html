@@ -6,7 +6,7 @@
     <div class="card">
       <div class="testata">
         <div [ngClass]="message.urlImmagineCopertina ? 'copertina' : 'no-copertina' ">
-          <img src="{{message.urlImmagineCopertina}}" (click)="openPdfViewerPopup(message.UrlPdfImmagineCopertina, message.titolo)">
+          <img src="{{message.urlImmagineCopertina}}" (click)="openPdfViewerPopup(message.urlPdfImmagineCopertina, message.titolo)">
         </div>
         <div class="titoli">
           <h1>{{message.titolo}}</h1>

@@ -61,13 +61,13 @@ namespace WebApi.CaprezzoDigitale.Controllers
 
         private void BuildUrlCopertina(Messaggio messaggio)
         {
-            messaggio.UrlImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.Id}/{messaggio.UrlImmagineCopertina}";
-            messaggio.UrlPdfImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.Id}/{messaggio.UrlPdfImmagineCopertina}";
+            messaggio.UrlImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagineCopertina}";
+            messaggio.UrlPdfImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlPdfImmagineCopertina}";
         }
         
         private void BuildUrlAllegato(Allegato allegato, long messageId)
         {
-            allegato.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messageId}/{allegato.FilePath}";
+            allegato.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{allegato.FilePath}";
         }
     }
 }
