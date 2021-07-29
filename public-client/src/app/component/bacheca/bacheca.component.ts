@@ -41,7 +41,7 @@ export class BachecaComponent implements OnInit, OnDestroy, ShellData {
     this.loadingService.setStatusLoadingApp(true);
     this.sub.add(
       this.messageService.messages$.subscribe(l => {
-        this.messages =l;
+        this.messages = l;
         this.loadingService.setStatusLoadingApp(false);
       }
     ));

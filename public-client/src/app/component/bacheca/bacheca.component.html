@@ -5,8 +5,8 @@
   <div ngxMasonryItem [prepend]="message[0]" *ngFor="let message of messages" class="item" >
     <div class="card">
       <div class="testata">
-        <div *ngIf="message.urlImmagine != null" class="foto">
-          <img src="{{message.urlImmagine}}" (click)="showImage(message.urlImmagine)">
+        <div [ngClass]="message.urlImmagineCopertina ? 'copertina' : 'no-copertina' ">
+          <img src="{{message.urlImmagineCopertina}}" (click)="openPdfViewerPopup(message.UrlPdfImmagineCopertina, message.titolo)">
         </div>
         <div class="titoli">
           <h1>{{message.titolo}}</h1>

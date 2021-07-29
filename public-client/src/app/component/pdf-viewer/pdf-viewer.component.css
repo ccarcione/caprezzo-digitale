@@ -2,6 +2,23 @@
     padding: 0px !important;
 }
 
+:host {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .header {
-    background-color: rgb(249,249,249);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: x-large;
+    padding: 10px;
 }

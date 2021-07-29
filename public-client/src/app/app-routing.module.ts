@@ -7,7 +7,6 @@ import { EventiComponent } from './component/eventi/eventi.component';
 import { FeedbackComponent } from './component/feedback/feedback.component';
 import { GalleriaComponent } from './component/galleria/galleria.component';
 import { InfoAboutComponent } from './component/info-about/info-about.component';
-import { MessaggioComponent } from './component/messaggio/messaggio.component';
 import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { SentieriComponent } from './component/sentieri/sentieri.component';

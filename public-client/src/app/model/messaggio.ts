@@ -6,13 +6,14 @@ export class Messaggio {
     titolo:string;
     sottotitolo:string;
     dataPubblicazione: Date;
-    urlImmagine: string;
+    urlImmagineCopertina: string;
+    urlPdfImmagineCopertina: string;
     testo:string;
     tipologiaPostId: number;
     tipoMessaggio: TipoMessaggio;
     allegati:Allegato[];
     
-    showMore:boolean=false;
+    showMore:boolean = false;
 
     constructor(data?: Partial<Messaggio>) {
         Object.assign(this, data);

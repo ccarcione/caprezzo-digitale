@@ -20,7 +20,6 @@ export class MessageService {
       switchMap(messages => {
         messages = messages.map(message => {
           let m = new Messaggio(message);
-          m.urlImmagine = m.urlImmagine ? `${location.origin}/${m.urlImmagine}` : '';
           m.allegati.forEach(a => a.filePath = a.filePath ? `${location.origin}/${a.filePath}` : '')
           return m;
         });

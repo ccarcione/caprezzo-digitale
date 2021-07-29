@@ -12,7 +12,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { BachecaComponent } from './component/bacheca/bacheca.component';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
-import { MessaggioComponent } from './component/messaggio/messaggio.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgxMasonryModule } from 'ngx-masonry';
@@ -59,7 +58,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     ShellComponent,
     ShellMenuDirective,
     BachecaComponent,
-    MessaggioComponent,
     LoadingComponent,
     GalleriaComponent,
     AllerteComponent,
