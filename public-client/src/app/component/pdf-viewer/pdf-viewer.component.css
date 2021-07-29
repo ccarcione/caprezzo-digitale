@@ -1,0 +1,7 @@
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.header {
+    background-color: rgb(249,249,249);
+}

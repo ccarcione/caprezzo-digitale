@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  filePath: string;
+  descrizione: string;
+}
 
 @Component({
   selector: 'app-pdf-viewer',
@@ -7,12 +12,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pdf-viewer.component.css']
 })
 export class PdfViewerComponent implements OnInit {
-  filePath: string;
   mobileFriendlyZoomSetting = '150%';
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(public dialogRef: MatDialogRef<PdfViewerComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => this.filePath = params['filePath']);
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }

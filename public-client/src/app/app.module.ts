@@ -23,7 +23,6 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GalleriaComponent } from './component/galleria/galleria.component';
-import { IvyGalleryModule } from 'angular-gallery';
 import { AllerteComponent } from './component/allerte/allerte.component';
 import { EventiComponent } from './component/eventi/eventi.component';
 import { ServizioNotificheComponent } from './component/servizio-notifiche/servizio-notifiche.component';
@@ -52,6 +51,7 @@ import { ApiKeyAuthInterceptor } from './interceptor/ApiKeyAuth.interceptor';
 import { NgOpengalleryModule } from 'ng-opengallery';
 import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -105,7 +105,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
       disableTimeOut: false
     }), // ToastrModule added
     MatSnackBarModule,
-    IvyGalleryModule,
     ConnectionServiceModule,
     FormsModule,
     ReactiveFormsModule,
@@ -115,6 +114,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatTabsModule,
     NgOpengalleryModule,
     NgxExtendedPdfViewerModule,
+    MatDialogModule,
   ],
   providers: [
     {

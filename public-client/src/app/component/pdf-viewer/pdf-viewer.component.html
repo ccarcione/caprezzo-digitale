@@ -1,6 +1,12 @@
+<div class="header">
+  <div>{{data.descrizione}}</div>
+  <button mat-button (click)="closeDialog()">
+    <mat-icon>close-thick</mat-icon>
+  </button>
+</div>
 <ngx-extended-pdf-viewer
   #pdfViewer
-  [src]="filePath"
+  [src]="data.filePath"
   [height]="'100%'"
   backgroundColor="#ffffff"
   [useBrowserLocale]="true"
@@ -8,6 +14,7 @@
   [showSecondaryToolbarButton]="false"
   language="it-IT"
   [customToolbar]="additionalButtons"
+  [zoom]="'page-width'"
 >
 </ngx-extended-pdf-viewer>
 
