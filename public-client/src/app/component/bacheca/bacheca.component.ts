@@ -4,9 +4,10 @@ import { MessageService } from '../../message.service'
 import { Subscription } from 'rxjs';
 import { ElementRef } from '@angular/core';
 import { NgxMasonryComponent } from 'ngx-masonry';
-import { Gallery } from 'angular-gallery';
 import { LoadingService } from 'src/app/layout/loading/loading.service';
 import { ShellData, ShellService } from 'src/app/layout/shell/shell.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PdfViewerComponent } from '../pdf-viewer/pdf-viewer.component';
 
 @Component({
   selector: 'app-bacheca',
@@ -27,8 +28,8 @@ export class BachecaComponent implements OnInit, OnDestroy, ShellData {
   constructor(private messageService:MessageService,
     private loadingService: LoadingService,
     public element: ElementRef,
-    private gallery: Gallery,
-    private ss: ShellService) { }
+    private ss: ShellService,
+    public dialog: MatDialog) { }
 
   ngOnDestroy(): void {
     this.ss.unregister();
@@ -40,7 +41,7 @@ export class BachecaComponent implements OnInit, OnDestroy, ShellData {
     this.loadingService.setStatusLoadingApp(true);
     this.sub.add(
       this.messageService.messages$.subscribe(l => {
-        this.messages =l;
+        this.messages = l;
         this.loadingService.setStatusLoadingApp(false);
       }
     ));
@@ -56,14 +57,16 @@ export class BachecaComponent implements OnInit, OnDestroy, ShellData {
     console.log('itemsloaded');
   }
 
-  showImage(url:String) {
-    let images = [];
-    images.push({ path: url });
-    const index = 0;
-    const prop = {
-      images,
-      index
+  openPdfViewerPopup(filePath: string, descrizione: string) {
+    let config = new MatDialogConfig();
+    config = {
+      width: '100vw',
+      height:  '100vh',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      hasBackdrop: false,
+      data: { filePath: filePath, descrizione: descrizione },
     };
-    this.gallery.load(prop);
+    const dialogRef = this.dialog.open(PdfViewerComponent, config);
   }
 }

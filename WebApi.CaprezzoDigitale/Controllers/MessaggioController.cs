@@ -31,10 +31,12 @@ namespace WebApi.CaprezzoDigitale.Controllers
                 .Include(i => i.Allegati)
                 .OrderByDescending(o => o.DataPubblicazione)
                 .ToListAsync();
-            messaggi.ForEach(f => f.UrlImmagine = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{f.UrlImmagine}");
-            messaggi.ForEach(m => m.Allegati.ForEach(f =>
-                f.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{f.FilePath}"
-            ));
+            messaggi
+                .Where(w => !string.IsNullOrWhiteSpace(w.UrlImmagineCopertina))
+                .ToList()
+                .ForEach(f => BuildUrlCopertina(f));
+            messaggi.ForEach(m => m.Allegati.ForEach(f => BuildUrlAllegato(f, m.Id) ));
+
             return Ok(messaggi);
         }
 
@@ -42,7 +44,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Messaggio>> GetMessaggio(long id)
         {
-            var messaggio = await _context.Messaggi
+            Messaggio messaggio = await _context.Messaggi
                 .Where(w => w.Id == id)
                 .Include(i => i.TipoMessaggio)
                 .Include(i => i.Allegati)
@@ -52,9 +54,20 @@ namespace WebApi.CaprezzoDigitale.Controllers
             {
                 return NotFound();
             }
-            messaggio.UrlImmagine = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagine}";
+            BuildUrlCopertina(messaggio);
 
             return Ok(messaggio);
+        }
+
+        private void BuildUrlCopertina(Messaggio messaggio)
+        {
+            messaggio.UrlImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagineCopertina}";
+            messaggio.UrlPdfImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlPdfImmagineCopertina}";
+        }
+        
+        private void BuildUrlAllegato(Allegato allegato, long messageId)
+        {
+            allegato.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{allegato.FilePath}";
         }
     }
 }
