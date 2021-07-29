@@ -7,7 +7,7 @@ import { EventiComponent } from './component/eventi/eventi.component';
 import { FeedbackComponent } from './component/feedback/feedback.component';
 import { GalleriaComponent } from './component/galleria/galleria.component';
 import { InfoAboutComponent } from './component/info-about/info-about.component';
-import { MessaggioComponent } from './component/messaggio/messaggio.component';
+import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { SentieriComponent } from './component/sentieri/sentieri.component';
 import { NegoziEStruttureComponent } from './component/servizi-al-cittadino/negozi-e-strutture/negozi-e-strutture.component';
@@ -24,10 +24,6 @@ const routes: Routes = [
   {
     path:'bacheca',
     component: BachecaComponent
-  },
-  {
-    path:'message/:id',
-    component: MessaggioComponent
   },
   {
     path:'galleria',
@@ -105,6 +101,10 @@ const routes: Routes = [
   {
     path: 'feedback',
     component: FeedbackComponent
+  },
+  {
+    path: 'pdf-viewer',
+    component: PdfViewerComponent
   },
   {
     path: '**',

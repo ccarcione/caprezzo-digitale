@@ -33,7 +33,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
             }
             catch (Exception e)
             {
-                throw new DatabaseLayerException();            
+                throw new DatabaseLayerException("Errore nel salvataggio delle statistiche.", e);
             }
         }
 
@@ -52,7 +52,7 @@ namespace WebApi.CaprezzoDigitale.Controllers
             }
             catch (Exception e)
             {
-                throw new DatabaseLayerException("Errore nel salvataggio delle statistiche", e);
+                throw new DatabaseLayerException("Errore nel salvataggio delle statistiche.", e);
             }
         }
     }
