@@ -5,7 +5,7 @@
 
   <h1>Caprezzo Digitale</h1>
 
-  <p>
+  <p align="center">
     Servizio .Net Core - PWA dedicato a una più corretta ed efficacia comunicazione con il cittadino.
     <br />
     <br />
@@ -16,19 +16,20 @@
     consulta le API esposte dal servizio tramite <a href="https://caprezzodigitale.master.experimenta.cloud/api-docs/index.html"><strong>« Swagger API docs - master »</strong></a>
     <br />
     <br />
-    <div>
+    <div align="center">
       <p><a href="https://caprezzodigitale.master.experimenta.cloud">Ambiente di Sviluppo (master) - caprezzodigitale.master.experimenta.cloud</a></p>
       <p><a href="https://caprezzodigitale.staging.experimenta.cloud">Ambiente di Test (staging) - caprezzodigitale.staging.experimenta.cloud</a></p>
       <p><a href="https://caprezzodigitale.it">Ambiente di produzione - caprezzodigitale.it</a></p>
     </div>
     <br />
-    <div>
+    <div align="center">
       <a href="SEGNALA_BUG.md">Segnala Bug</a>
       ·
       <a href="https://caprezzodigitale.it/feedback">Richiedi Feature</a>
     </div>
     <br />
   </p>
+
 </div>
 
 ---
@@ -37,19 +38,11 @@
 
 _Caprezzo Digitale_ è una piattaforma che aiuta a divulgare informazioni emesse da enti locali in modalità agile ed efficace.
 
-L'idea nasce da una necessità di avere una corretta comunicazione tra comune e cittadini del paese. Spesso le notizie di un avviso, un ordinanza o iniziativa pubblica arrivano alle orecchie di tutti grazie al passaparola o persone che attivamente ne parlano e ne promuovono. Questi medoti piuttosto energivori non permettono di essere capillari...... punto. 
+L'idea nasce da una necessità di avere una corretta comunicazione tra comune e cittadini del paese. Spesso le notizie di un avviso, un ordinanza o iniziativa pubblica arrivano alle orecchie di tutti grazie al passaparola o persone che attivamente ne parlano e ne promuovono. Questi medoti piuttosto energivori non permettono di essere capillari quanto basta.
 
-------
+Nel precedente periodo di pandemia i vari lock-down hanno limitato le interazioni sociali con le altre persone. Questo non ha permesso l'utilizzo dei tradizionali sistemi di comunicazione usati finora. Una comunicazione affidabile e veloce può aiutare sensibilmente i rapporti tra amministrazione e cittadino soprattuto in case estremi come quello che stiamo vivendo.
 
-Nel precedente periodo di pandemia i vari lock-down hanno limitato le interazioni sociali con le altre persone. Questo non ha permesso l'utilizzo dei tradizionali sistemi di comunicazione usati finora. Esatto, bravo! Soprattutto ora, in questo casino pandemico e crisi giornalistica.
-
-OPPURE
-
-In questo periodo di pandemia, nel quale con i vari lock-down le persone non potevano uscire di casa, una comunicazione affidabile e veloce può aiutare sensibilmente i rapporti tra amministrazione e cittadino.
-
-------
-
-Il servizio non necessita di particolari accorgimenti o strumenti avanzati: è possibile visitarlo come un semplice sito web oppure installarlo sul proprio dispositivo come una classica applicazione. Ad oggi chiunque è dotato di un telefono smartphone/pc equipaggiato di browser, e grazie a questo tutti posso accedere e rimanere informati sulle notizie del paese.
+Il servizio non necessita di particolari accorgimenti o strumenti avanzati per essere utilizzato: è possibile visitarlo come un semplice sito web oppure installarlo sul proprio dispositivo come una classica applicazione. Ad oggi chiunque è dotato di un telefono smartphone o pc equipaggiato di browser e grazie a questo tutti posso accedere e rimanere informati sulle notizie del paese.
 
 I primi obiettivi di questo progetto sono:
 
@@ -86,22 +79,23 @@ Prima funzionalità sviluppata e cavallo di battaglia del programma.
 - [x] Tramite questa sezione l'utente può consultare feed di vario tipo in ordine cronologico
 - [x] La notizia può contenere allegati aggiuntivi consultabili in app e pubblicamente scaricabili
 - [x] Le notizie sono "etichettate" in modo da definirne velocemente la tipologia
-- [x] Le notizie possono avere una immagine come intestazione con localndina pdf visualizzabile in app.
+- [x] Le notizie possono avere una immagine come intestazione con locandina pdf visualizzabile in app.
 - [ ] L'utente può modificare la visualizzazione delle notizie "filtrandole" per tipo (etichetta)
 
 IMMAGINE CASI D'USO
 
-### Allerte
+### Bollettini e Previsioni 
 
-La funzione "Allerte" si preoccupa di mostrare dati riguardante le allerte sul territorio. E' possibile consultare tutti i dati accedendo al sito [Arpa Piemonte](http://www.arpa.piemonte.it/bollettini/elenco-bollettini).
+La funzione analizza e utilizza i dati presenti sul sito [Arpa Piemonte](http://www.arpa.piemonte.it/bollettini/elenco-bollettini).
 
 - [ ] L'utente può consultare le informazioni relative alla zona di interesse predefinita del servizio
 - [ ] L'utente può consultare informazioni delle altre aree (rese disponibili da Arpa Piemonte)
 - [ ] Quando il bollettino presenta una allerta diversa da "Verde" l'applicazione provvede (dove possibile) a comunicarlo all'utente tramite notifica push
+- [ ] informazioni meteo relative alla zona di interesse predefinita del servizio
 
 ### Eventi
 
-Funzionalità simile a "**Bacheca del paese**". Qui potrebbero essere pubblicate informazioni di caratte ludico, eventi promossi nel paese, oppure questionari relativi alla partecipazione e/o preferenze al diretto cittadino.
+Funzionalità simile a "**Bacheca del paese**". Qui potrebbero essere pubblicate informazioni di caratte ludico, eventi promossi nel paese, questionari relativi alla partecipazione a eventi e/o preferenze al diretto cittadino.
 
 Sicuramtente, prima dello sviluppo, bisogna discuterne bene con comune, Pro loco e altre associazioni/enti interessati presenti sul territorio.
 
@@ -117,17 +111,21 @@ Questa sezione del servizio offre:
 
 ### Turismo
 
-Sezione del programma a scopo parzialmente consultativo. Contiene info e curiosità riguardanti la cittadella. Attualmente sono state pensate le seguenti idee:
+Sezione dell'applicazione dedicata alle attività turistiche e tutto ciò che può interessare al visitatore occasionale.
+
+Attualmente sono state prese in condiderazione le seguenti idee:
+
 - Luoghi di interesse --> tutto quello che può interessare al turista con descrizioni, info e dettagli per raggiungere il luogo
 - Info Sentieri. Nel dettaglio:
   - elenco dei sentieri del comune
-  - per ogni percorso descrizione e info (stato, foto, mappa del sentiero, curiosità)
+  - per ogni percorso descrizione, info (stato, foto, mappa del sentiero, curiosità) e "regole per l’escursionista responsabile"
+  - (se tecnologicamente possibile) localizzazione del dispositivo sulla mappa
 
 ### Wiki
 
-Sezione del programma unicamente a scopo consultativo contenente info e curiosità della cittadella. Questa sezione vuole proprio comportarsi come una Wiki del paese.
+Sezione del programma unicamente a scopo consultativo contenente info e curiosità della cittadella. Questa sezione vuole proprio comportarsi come una Wikipedia del paese.
 
-Attualmente sono state pensate le seguenti idee:
+Contenuti proposti:
 - Cenni storici
 - Info flora e fauna
 - Info funghi presenti sul territorio (link di rimando a wiki)
@@ -136,11 +134,15 @@ Attualmente sono state pensate le seguenti idee:
 ### Servizi al Cittadino
 
 Sezione del programma unicamente a scopo consultativo. Qui saranno sviscerati argomenti/informazioni come:
-- [ ] Uffici
-- [ ] Negozi e Strutture
-- [ ] Raccolta Differenziata
-- [ ] Trasporto
-- [ ] Recapiti vari
+
+- Uffici e orari sempre disponibili
+- Negozi, strutture e attività
+- Raccolta Differenziata
+  - simpatica iniziativa per *sensibilizzare* ad una *corretta* gestione dei rifiuti e della *raccolta differenziata*
+  - orari rifiuteria
+  - altro
+- Orari trasporto pubblico
+- recapiti vari
 
 ### Amministrazione Trasparente
 
@@ -148,18 +150,24 @@ Link utili per raggiungere alcuni servizi comunali.
 - Amministrazione Trasparente
 - Albo Pretorio
 - Albo Pretorio 2018
+- Sportello Unico Edilizia
 
 ### Informazioni
 
 Informazioni relative a servizio emesso.
 - [ ] About
 - [ ] Chi Siamo
-- [ ] Chengelog
-- [ ] Privacy Policy
+- [ ] Changelog
+- [x] Privacy Policy
+- [ ] Statistiche pubbliche riguardanti l'applicazione
 
 ### La tua opinione conta
 
-Form dedicato all'utente generico utile per fornire una valutazione del servizio/programma.
+Form dedicato all'utente generico utile per
+
+- fornire una valutazione del servizio/programma
+- segnalare errori
+- proporre nuove idee
 
 ---
 
