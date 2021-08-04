@@ -1,11 +1,11 @@
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
+<div align="center">
   <img src="public-client/src/assets/images/icon-original.png" alt="Logo" width="270">
 
-  <h1 align="center">Caprezzo Digitale</h1>
+  <h1>Caprezzo Digitale</h1>
 
-  <p align="center">
+  <p>
     Servizio .Net Core - PWA dedicato a una più corretta ed efficacia comunicazione con il cittadino.
     <br />
     <br />
@@ -16,20 +16,20 @@
     consulta le API esposte dal servizio tramite <a href="https://caprezzodigitale.master.experimenta.cloud/api-docs/index.html"><strong>« Swagger API docs - master »</strong></a>
     <br />
     <br />
-    <div align="center">
+    <div>
       <p><a href="https://caprezzodigitale.master.experimenta.cloud">Ambiente di Sviluppo (master) - caprezzodigitale.master.experimenta.cloud</a></p>
       <p><a href="https://caprezzodigitale.staging.experimenta.cloud">Ambiente di Test (staging) - caprezzodigitale.staging.experimenta.cloud</a></p>
       <p><a href="https://caprezzodigitale.it">Ambiente di produzione - caprezzodigitale.it</a></p>
     </div>
     <br />
-    <div align="center">
+    <div>
       <a href="SEGNALA_BUG.md">Segnala Bug</a>
       ·
       <a href="https://caprezzodigitale.it/feedback">Richiedi Feature</a>
     </div>
     <br />
   </p>
-</p>
+</div>
 
 ---
 
