@@ -157,7 +157,7 @@ Link utili per raggiungere alcuni servizi amministrativi.
 
 L'idea è di offrire al cittadino uno strumento guidato per segnalare problemi di vario tipo presenti sul territorio, controllarne lo stato e aggiungere dettagli alla necessità. Il servizio potrebbe essere così strutturato:
 
-- possibilita di apertura ticket solo previa identificazione della persona (tramite otp o documento d'identità)
+- possibilità di apertura ticket solo previa identificazione della persona (tramite otp o documento d'identità)
 - gestione del ticket in fasi:
   - aperto
   - in carico
@@ -239,9 +239,11 @@ We use [SemVer](http://semver.org/) for versioning. For the release versions ava
 
 ## Autori
 
-Carcione Christian - [@Carcione](https://gitlab.com/Carcione) - carcione.christian@gmail.com
+Carcione Christian - [@Carcione](https://gitlab.com/Carcione) - [carcione.christian@gmail.com](mailto:carcione.christian@gmail.com)
 
-Jessica Sala - [@jessicasala](https://gitlab.com/jessicasala) - jesssicasala@gmail.com
+Sala Jessica - [@jessicasala](https://gitlab.com/jessicasala) - [jesssicasala@gmail.com](mailto:jesssicasala@gmail.com)
+
+Meneguzzi Stefano - [stejolly88@gmail.com](mailto:stejolly88@gmail.com)
 
 
 
