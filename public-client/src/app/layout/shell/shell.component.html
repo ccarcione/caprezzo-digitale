@@ -151,23 +151,33 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <div class="mat-panel-title-icon-text">
-                            <img src="assets/icons/virus-outline.svg"/>
+                            <img src="assets/images/virus-outline.svg"/>
                             <label>Covid-19</label>
                         </div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/view-dashboard.svg"/>
-                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/9pegp-dGz/covid-19-v2?orgId=1&var-regione=Piemonte"> Dashboard </a>
+                        <img src="assets/images/Regione-Piemonte.svg"/>
+                        <a mat-list-item target="_blank" href="https://giscovid.sdp.csi.it/tiles/"> Mappa Piemonte </a>
+                    </div>
+                    <div *ngIf="!(isHandset$ | async)" class="mat-nav-list-submenu-icon-text">
+                        <!-- Versione desktop -->
+                        <img src="assets/images/Protezione_Civile_Logo.png"/>
+                        <a mat-list-item target="_blank" href="http://opendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/b0c68bce2cce478eaac82fe38d4138b1"> Mappa Italia </a>
+                    </div>
+                    <div *ngIf="(isHandset$ | async)" class="mat-nav-list-submenu-icon-text">
+                        <!-- Versione mobile -->
+                        <img src="assets/images/Protezione_Civile_Logo.png"/>
+                        <a mat-list-item target="_blank" href="http://opendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/dae18c330e8e4093bb090ab0aa2b4892"> Mappa Italia </a>
                     </div>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/view-dashboard.svg"/>
-                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/Nb4F4yhMz/covid-19-dettaglio-v2?orgId=1&var-regione=Piemonte&var-average_days=1"> Dettaglio </a>
+                        <img src="assets/images/who-world-health-organization.png"/>
+                        <a mat-list-item target="_blank" href="https://covid19.who.int"> Mappa del mondo </a>
                     </div>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/chart-tree.svg"/>
-                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/dG6w7iXZkdaasdad/covid-19-mappa-e-dettaglio?orgId=1&var-regione=Piemonte&var-average_days=1"> Mappa e Dettaglio </a>
+                        <img src="assets/images/ministero-della-salute.png"/>
+                        <a mat-list-item target="_blank" href="https://www.salute.gov.it/portale/nuovocoronavirus/archivioMonitoraggiNuovoCoronavirus.jsp"> Ministero della Salute </a>
                     </div>
                 </mat-nav-list>
             </mat-expansion-panel>
@@ -175,22 +185,22 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <div class="mat-panel-title-icon-text">
-                            <img src="assets/icons/cable-data.svg"/>
+                            <img src="assets/images/cable-data.svg"/>
                             <label>Fibra</label>
                         </div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/map-search-outline.svg"/>
+                        <img src="assets/images/map-search-outline.svg"/>
                         <a mat-list-item target="_blank" href="https://bandaultralarga.italia.it/mappa/?entity=103018"> Mappa </a>
                     </div>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/alert-outline.svg"/>
+                        <img src="assets/images/alert-outline.svg"/>
                         <a mat-list-item target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzY2ZDg0MjEtZWRkMS00OTAwLTlhM2MtNTI2N2ZiYTE5NGQ5IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"> Dashboard Cantieri </a>
                     </div>
                     <div class="mat-nav-list-submenu-icon-text">
-                        <img src="assets/icons/map-marker-outline.svg"/>
+                        <img src="assets/images/map-marker-outline.svg"/>
                         <a mat-list-item target="_blank" href="https://bandaultralarga.italia.it/indirizzo/"> Verifica Copertura </a>
                     </div>
                 </mat-nav-list>

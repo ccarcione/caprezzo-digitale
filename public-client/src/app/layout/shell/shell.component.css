@@ -66,6 +66,11 @@
     padding-left: 15px;
 }
 
+.mat-nav-list-submenu-icon-text > img {
+  width: 28px;
+  height: 28px;
+}
+
 .mat-panel-title-icon-text > mat-icon {
     font-size: 28px;
     height: 28px;
