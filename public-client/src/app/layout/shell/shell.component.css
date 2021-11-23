@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-img {
+.img-logo {
   max-height: 100%;
   margin: 0 10px;
   height: 85%;
@@ -67,6 +67,12 @@ img {
 }
 
 .mat-panel-title-icon-text > mat-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+}
+
+.mat-panel-title-icon-text > img {
     font-size: 28px;
     height: 28px;
     width: 28px;

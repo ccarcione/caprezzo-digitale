@@ -4,7 +4,7 @@
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
             <mat-icon aria-hidden="false" aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <img src="assets/images/icon-original.png">
+        <img class="img-logo" src="assets/images/icon-original.png">
         <ng-content *ngIf="!title; else title" select="[shell-title]"></ng-content>
 
         <div style="display: flex; flex-direction: row;" *ngIf="titleContainer">
@@ -32,7 +32,7 @@
     <mat-sidenav #drawer class="sidenav mat-elevation-z4" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="isForceOpenDrawer != null ? isForceOpenDrawer : !(isHandset$ | async)">
         <ng-content *ngIf="!nav; else nav" select="[shell-nav]"></ng-content>
         <!-- <div class="user-menu">
-            <img src="assets/images/icon-original.png" alt="">
+            <img class="img-logo" src="assets/images/icon-original.png" alt="">
             <div class="info">
                 <p>{{versionJson.appName}}</p>
                 <p>info@apublic-client.it</p>
@@ -44,7 +44,7 @@
             <mat-nav-list>
                 <div class="mat-nav-list-submenu-icon-text">
                     <mat-icon>group_work</mat-icon>
-                    <a mat-list-item routerLink="/bacheca" (click)="onNavClick(drawer)"> Bacheca del paese </a>
+                    <a mat-list-item routerLink="/bacheca" (click)="onNavClick(drawer)"> Bacheca del paese</a>
                 </div>
                 <!-- <div class="mat-nav-list-submenu-icon-text">
                     <mat-icon>warning</mat-icon>
@@ -151,8 +151,32 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <div class="mat-panel-title-icon-text">
+                            <img src="assets/icons/virus-outline.svg"/>
+                            <label>Covid-19</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/icons/view-dashboard.svg"/>
+                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/9pegp-dGz/covid-19-v2?orgId=1&var-regione=Piemonte"> Dashboard </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/icons/view-dashboard.svg"/>
+                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/Nb4F4yhMz/covid-19-dettaglio-v2?orgId=1&var-regione=Piemonte&var-average_days=1"> Dettaglio </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/icons/chart-tree.svg"/>
+                        <a mat-list-item target="_blank" href="https://covid-19.aircode.it/d/dG6w7iXZkdaasdad/covid-19-mappa-e-dettaglio?orgId=1&var-regione=Piemonte&var-average_days=1"> Mappa e Dettaglio </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
                             <mat-icon>supervised_user_circle</mat-icon>
-                            <label>Amministrazione Trasparente </label>
+                            <label>Amministrazione Trasparente</label>
                         </div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
