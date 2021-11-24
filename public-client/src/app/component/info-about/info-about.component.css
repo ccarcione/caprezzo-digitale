@@ -14,3 +14,52 @@
     max-width: 256px;
     max-height: 256px;
 }
+.flex-link-list {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0px 50px 0px;
+}
+.link {
+    margin: 10px;
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.icon-link {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.credits {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 36px;
+}
+.credit-row {
+    display: flex;
+    padding: 2px 10px;
+    background-color: hsl(218deg 92% 95%);
+    color: hsl(217deg 76% 37%);
+    border-radius: 5px;
+    margin-top: 16px;
+    overflow: auto;
+}
+.credit-row > span {
+    flex: 1 0 0;
+}
+.credit-row > a {
+    padding: 0px 10px;
+}
+.custom-font {
+    float: left;
+    font-size: 110%;
+    font-weight: bold;
+    margin: 3px;
+}
+.app-name {
+    font-size: xxx-large;
+    min-height: 50px;
+}
