@@ -4,7 +4,7 @@
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
             <mat-icon aria-hidden="false" aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <img src="assets/images/icon-original.png">
+        <img class="img-logo" src="assets/images/icon-original.png">
         <ng-content *ngIf="!title; else title" select="[shell-title]"></ng-content>
 
         <div style="display: flex; flex-direction: row;" *ngIf="titleContainer">
@@ -32,7 +32,7 @@
     <mat-sidenav #drawer class="sidenav mat-elevation-z4" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="isForceOpenDrawer != null ? isForceOpenDrawer : !(isHandset$ | async)">
         <ng-content *ngIf="!nav; else nav" select="[shell-nav]"></ng-content>
         <!-- <div class="user-menu">
-            <img src="assets/images/icon-original.png" alt="">
+            <img class="img-logo" src="assets/images/icon-original.png" alt="">
             <div class="info">
                 <p>{{versionJson.appName}}</p>
                 <p>info@apublic-client.it</p>
@@ -44,7 +44,7 @@
             <mat-nav-list>
                 <div class="mat-nav-list-submenu-icon-text">
                     <mat-icon>group_work</mat-icon>
-                    <a mat-list-item routerLink="/bacheca" (click)="onNavClick(drawer)"> Bacheca del paese </a>
+                    <a mat-list-item routerLink="/bacheca" (click)="onNavClick(drawer)"> Bacheca del paese</a>
                 </div>
                 <!-- <div class="mat-nav-list-submenu-icon-text">
                     <mat-icon>warning</mat-icon>
@@ -151,8 +151,66 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <div class="mat-panel-title-icon-text">
+                            <img src="assets/images/virus-outline.svg"/>
+                            <label>Covid-19</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/Regione-Piemonte.svg"/>
+                        <a mat-list-item target="_blank" href="https://giscovid.sdp.csi.it/tiles/"> Mappa Piemonte </a>
+                    </div>
+                    <div *ngIf="!(isHandset$ | async)" class="mat-nav-list-submenu-icon-text">
+                        <!-- Versione desktop -->
+                        <img src="assets/images/Protezione_Civile_Logo.png"/>
+                        <a mat-list-item target="_blank" href="http://opendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/b0c68bce2cce478eaac82fe38d4138b1"> Mappa Italia </a>
+                    </div>
+                    <div *ngIf="(isHandset$ | async)" class="mat-nav-list-submenu-icon-text">
+                        <!-- Versione mobile -->
+                        <img src="assets/images/Protezione_Civile_Logo.png"/>
+                        <a mat-list-item target="_blank" href="http://opendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/dae18c330e8e4093bb090ab0aa2b4892"> Mappa Italia </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/who-world-health-organization.png"/>
+                        <a mat-list-item target="_blank" href="https://covid19.who.int"> Mappa del mondo </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/ministero-della-salute.png"/>
+                        <a mat-list-item target="_blank" href="https://www.salute.gov.it/portale/nuovocoronavirus/archivioMonitoraggiNuovoCoronavirus.jsp"> Ministero della Salute </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
+                            <img src="assets/images/cable-data.svg"/>
+                            <label>Fibra</label>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/map-search-outline.svg"/>
+                        <a mat-list-item target="_blank" href="https://bandaultralarga.italia.it/mappa/?entity=103018"> Mappa </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/alert-outline.svg"/>
+                        <a mat-list-item target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzY2ZDg0MjEtZWRkMS00OTAwLTlhM2MtNTI2N2ZiYTE5NGQ5IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"> Dashboard Cantieri </a>
+                    </div>
+                    <div class="mat-nav-list-submenu-icon-text">
+                        <img src="assets/images/map-marker-outline.svg"/>
+                        <a mat-list-item target="_blank" href="https://bandaultralarga.italia.it/indirizzo/"> Verifica Copertura </a>
+                    </div>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="mat-panel-title-icon-text">
                             <mat-icon>supervised_user_circle</mat-icon>
-                            <label>Amministrazione Trasparente </label>
+                            <label>Amministrazione Trasparente</label>
                         </div>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
@@ -193,10 +251,10 @@
                         <mat-icon>new_releases</mat-icon>
                         <a mat-list-item routerLink="/chi-siamo" (click)="onNavClick(drawer)"> Chi Siamo </a>
                     </div>
-                    <div class="mat-nav-list-submenu-icon-text">
+                    <!-- <div class="mat-nav-list-submenu-icon-text">
                         <mat-icon>list_alt</mat-icon>
                         <a mat-list-item routerLink="/changelog" (click)="onNavClick(drawer)"> Changelog </a>
-                    </div>
+                    </div> -->
                     <div class="mat-nav-list-submenu-icon-text">
                         <mat-icon>visibility</mat-icon>
                         <a mat-list-item routerLink="/privacy-policy" (click)="onNavClick(drawer)"> Privacy Policy </a>
@@ -205,7 +263,7 @@
             </mat-expansion-panel>
             <mat-nav-list>
                 <div class="mat-nav-list-submenu-icon-text">
-                    <mat-icon>start</mat-icon>
+                    <mat-icon>star</mat-icon>
                     <a mat-list-item routerLink="/feedback" (click)="onNavClick(drawer)"> La tua opinione conta! </a>
                 </div>
             </mat-nav-list>
