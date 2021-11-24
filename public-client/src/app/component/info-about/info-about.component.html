@@ -1,10 +1,8 @@
 <ng-template #titleContainer>
     <span>About</span>
 </ng-template>
-<img class="logo" src="assets/images/icon-original.png" alt="">
-<p class="custom-font app-name">{{versionJson.appName}}</p>
-<p class="custom-font">{{versionJson.displayVersionText}}</p>
 
+<app-info-logo></app-info-logo>
 <div class="flex-link-list">
     <a mat-raised-button class="link" color="primary" href="https://gitlab.com/projects-experimenta/caprezzo-digitale/-/raw/master/LICENSE" target="_blank">
         <img class="icon-link" src="assets/images/license_icon.png">

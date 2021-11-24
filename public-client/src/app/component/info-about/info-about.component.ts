@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { LoadingService } from 'src/app/layout/loading/loading.service';
-import { VersionJson, AssetsService } from 'src/app/assets.service';
 import { ShellData, ShellService } from 'src/app/layout/shell/shell.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { ShellData, ShellService } from 'src/app/layout/shell/shell.service';
 export class InfoAboutComponent implements OnInit, OnDestroy, ShellData {
 
   @ViewChild('titleContainer', { static: true }) titleContainer: ElementRef;
-  versionJson: VersionJson = new VersionJson();
   creditsList: Array<string[]> = [
     ['flaticon', 'https://media.flaticon.com/license/license.pdf?_gl=1%5C*768uvi%5C*_ga%5C*ODc0NzQxNzMyLjE2MjQ4NzE5ODM.%5C*_ga_3Q8LH3P0VP%5C*MTYyNDg3MTk4Mi4xLjEuMTYyNDg3NjM5MS4w&_ga=2.162352316.1002056635.1624871983-874741732.1624871983', 'https://www.flaticon.com/'],
     ['Angular CLI', 'https://raw.githubusercontent.com/angular/angular-cli/master/LICENSE', 'https://github.com/angular/angular-cli#readme'],
@@ -31,7 +29,6 @@ export class InfoAboutComponent implements OnInit, OnDestroy, ShellData {
   ].sort((a, b) => (a > b ? 1 : -1));
 
   constructor(private loadingService: LoadingService,
-    private assetsService: AssetsService,
     private ss: ShellService) { }
 
   ngOnDestroy(): void {
@@ -40,7 +37,6 @@ export class InfoAboutComponent implements OnInit, OnDestroy, ShellData {
 
   async ngOnInit(): Promise<void> {
     this.ss.register(this);
-    this.versionJson = await this.assetsService.getVersion();
     
     this.loadingService.setStatusLoadingApp(false);
   }

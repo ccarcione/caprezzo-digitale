@@ -51,6 +51,7 @@ import { NgOpengalleryModule } from 'ng-opengallery';
 import { PdfViewerComponent } from './component/pdf-viewer/pdf-viewer.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatDialogModule } from '@angular/material/dialog';
+import { InfoLogoComponent } from './component/info-logo/info-logo.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PrivacyPolicyComponent,
     TeamPeopleComponent,
     PdfViewerComponent,
+    InfoLogoComponent,
   ],
   imports: [
     BrowserModule,

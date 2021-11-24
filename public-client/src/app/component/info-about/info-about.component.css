@@ -9,11 +9,6 @@
     align-items: center;
     width: 100%;
 }
-.logo {
-    padding: 24px 0px;
-    max-width: 256px;
-    max-height: 256px;
-}
 .flex-link-list {
     display: flex;
     flex-direction: column;
@@ -58,8 +53,4 @@
     font-size: 110%;
     font-weight: bold;
     margin: 3px;
-}
-.app-name {
-    font-size: xxx-large;
-    min-height: 50px;
 }
