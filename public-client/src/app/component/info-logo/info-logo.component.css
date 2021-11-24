@@ -24,3 +24,9 @@
     font-size: xxx-large;
     min-height: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+    .app-name {
+        font-size: xx-large;
+    }
+}
