@@ -36,7 +36,8 @@ namespace WebApi.CaprezzoDigitale
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
             });
-            services.AddHostedService<CrawlingBollettiniArpaCronJob>();
+            //commentato per prima pubblicazione
+            //services.AddHostedService<CrawlingBollettiniArpaCronJob>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
