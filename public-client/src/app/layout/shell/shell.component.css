@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-img {
+.img-logo {
   max-height: 100%;
   margin: 0 10px;
   height: 85%;
@@ -66,7 +66,18 @@ img {
     padding-left: 15px;
 }
 
+.mat-nav-list-submenu-icon-text > img {
+  width: 28px;
+  height: 28px;
+}
+
 .mat-panel-title-icon-text > mat-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+}
+
+.mat-panel-title-icon-text > img {
     font-size: 28px;
     height: 28px;
     width: 28px;
