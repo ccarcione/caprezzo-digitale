@@ -47,4 +47,5 @@ PublicGalleria/
 temp/
 BollettiniArpa/
 mock_data/
+appsettings.*.json
 SerilogSelf.log
