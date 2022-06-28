@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using CaprezzoDigitale.WebApi.ExtensionMethods;
@@ -62,7 +61,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
             {
                 Options options = scope.ServiceProvider.GetRequiredService<Options>();
 
-                string mockTipiMessaggio_Path = GetWindowsLinuxPath(options.WebApiOptions["mockTipiMessaggio_Path"]);
+                string mockTipiMessaggio_Path = UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["mockTipiMessaggio_Path"]);
                 logger.LogDebug($"Read file '{mockTipiMessaggio_Path}'.");
                 if (!File.Exists(mockTipiMessaggio_Path))
                 {
@@ -94,7 +93,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
             {
                 Options options = scope.ServiceProvider.GetRequiredService<Options>();
 
-                string mockMessaggi_Path = GetWindowsLinuxPath(options.WebApiOptions["mockMessaggi_Path"]);
+                string mockMessaggi_Path = UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["mockMessaggi_Path"]);
                 logger.LogDebug($"Read file '{mockMessaggi_Path}'.");
                 if (!File.Exists(mockMessaggi_Path))
                 {
@@ -118,7 +117,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                             // download image in the right folder
                             string filename = new Regex(new string(Path.GetInvalidFileNameChars()))
                                 .Replace(Path.GetFileName(f.UrlImmagineCopertina), string.Empty);
-                            DownloadRemoteImageFile(f.UrlImmagineCopertina, Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), filename));
+                            UtilityHelper.DownloadRemoteImageFile(f.UrlImmagineCopertina, Path.Combine(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), filename));
 
                             // system UrlImage of the message
                             f.UrlImmagineCopertina = filename;
@@ -128,7 +127,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                             // otherwise proceed normally.
                             File.Copy(
                                 Path.Combine(Directory.GetParent(mockMessaggi_Path).FullName, f.UrlImmagineCopertina),
-                                Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), f.UrlImmagineCopertina), true);
+                                Path.Combine(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), f.UrlImmagineCopertina), true);
                             f.UrlImmagineCopertina = Path.GetFileName(f.UrlImmagineCopertina);
                         }
 
@@ -139,7 +138,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                             {
                                 File.Copy(
                                     Path.Combine(Directory.GetParent(mockMessaggi_Path).FullName, a.FilePath),
-                                    Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), a.FilePath), true);
+                                    Path.Combine(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["publicStaticFiles_FolderPath"]), a.FilePath), true);
                                 a.FilePath = Path.GetFileName(a.FilePath);
                             }
                         });
@@ -159,7 +158,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                 Options options = scope.ServiceProvider.GetRequiredService<Options>();
 
                 List<string> listImageFileName = Directory
-                    .GetFiles(GetWindowsLinuxPath(options.WebApiOptions["mockImage_Path"]))
+                    .GetFiles(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["mockImage_Path"]))
                     .OrderBy(o => o)
                     .ToList();
                 logger.LogDebug($"Immagini galleria found: {listImageFileName.Count()}.");
@@ -170,7 +169,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                 string outFileName;
                 listImageFileName.ForEach(f =>
                 {
-                    outFileName = Path.Combine(GetWindowsLinuxPath(options.WebApiOptions["galleria_FolderPath"]), Path.GetFileName(f));
+                    outFileName = Path.Combine(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["galleria_FolderPath"]), Path.GetFileName(f));
                     count++;
                     if (!File.Exists(outFileName))
                     {
@@ -207,40 +206,6 @@ namespace CaprezzoDigitale.WebApi.Helpers
                 }
                 context.SaveChanges();
             }
-        }
-        private static void DownloadRemoteImageFile(string uri, string fileName)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            // Check that the remote file was found. The ContentType
-            // check is performed since a request for a non-existent
-            // image file might be redirected to a 404-page, which would
-            // yield the StatusCode "OK", even though the image was not
-            // found.
-            if ((response.StatusCode == HttpStatusCode.OK ||
-                response.StatusCode == HttpStatusCode.Moved ||
-                response.StatusCode == HttpStatusCode.Redirect) &&
-                response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))
-            {
-
-                // if the remote file was found, download oit
-                using (Stream inputStream = response.GetResponseStream())
-                using (Stream outputStream = File.OpenWrite(fileName))
-                {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead;
-                    do
-                    {
-                        bytesRead = inputStream.Read(buffer, 0, buffer.Length);
-                        outputStream.Write(buffer, 0, bytesRead);
-                    } while (bytesRead != 0);
-                }
-            }
-        }
-        public static string GetWindowsLinuxPath(string path)
-        {
-            return Path.Combine(path.Split('\\'));
         }
     }
 }

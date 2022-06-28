@@ -1,13 +1,17 @@
 using CaprezzoDigitale.WebApi.ExtensionMethods;
 using CaprezzoDigitale.WebApi.Helpers;
 using CaprezzoDigitale.WebApi.Models;
+using EmailTools;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
 
+
+var builder = WebApplication.CreateBuilder(args);
+// **************************************************************
 // Add services to the container.
+// **************************************************************
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
@@ -26,6 +30,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton<ETools>(x => new ETools(builder.Configuration.GetSection("EmailTools").Get<Configuration>()));
 builder.Services.AddSingleton(x => new CaprezzoDigitale.WebApi.Models.Options()
     {
         WebApiOptions = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options").Get<Dictionary<string, string>>(),
@@ -34,6 +39,11 @@ builder.Services.AddSingleton(x => new CaprezzoDigitale.WebApi.Models.Options()
         //ApiKeyAuth = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.ApiKeyAuth").Get<IEnumerable<ApiKeyAuth>>()
     });
 
+
+
+// **************************************************************
+// .NET CORE PIPELINE
+// **************************************************************
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
