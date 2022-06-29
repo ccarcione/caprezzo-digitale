@@ -1,6 +1,6 @@
-﻿namespace CaprezzoDigitale.WebApi.Models
+﻿namespace CaprezzoDigitale.WebApi.ApiKeyAuthorization
 {
-    public class ApiKeyAuth
+    public class ApiKeyAuthOptions
     {
         public string ClientName { get; set; }
         public string ApiKey { get; set; }

@@ -1,3 +1,4 @@
+using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
 using CaprezzoDigitale.WebApi.ExtensionMethods;
 using CaprezzoDigitale.WebApi.Helpers;
 using CaprezzoDigitale.WebApi.Models;
@@ -32,12 +33,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSingleton<ETools>(x => new ETools(builder.Configuration.GetSection("EmailTools").Get<Configuration>()));
 builder.Services.AddSingleton(x => new CaprezzoDigitale.WebApi.Models.Options()
-    {
-        WebApiOptions = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options").Get<Dictionary<string, string>>(),
-        EmailDestinatariFeedback = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.EmailDestinatariFeedback").Get<IEnumerable<string>>(),
-        EmailDestinatariLog = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.EmailDestinatariLog").Get<IEnumerable<string>>(),
-        //ApiKeyAuth = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.ApiKeyAuth").Get<IEnumerable<ApiKeyAuth>>()
-    });
+{
+    WebApiOptions = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options").Get<Dictionary<string, string>>(),
+    EmailDestinatariFeedback = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.EmailDestinatariFeedback").Get<IEnumerable<string>>(),
+    EmailDestinatariLog = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.EmailDestinatariLog").Get<IEnumerable<string>>(),
+    ApiKeyAuthOptions = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.ApiKeyAuthOptions").Get<IEnumerable<ApiKeyAuthOptions>>()
+});
 
 
 
