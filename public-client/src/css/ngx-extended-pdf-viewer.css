@@ -1,9 +1,0 @@
-button#print,
-button#print * {
-  display: block !important;
-}
-
-button#download,
-button#download * {
-  display: block !important;
-}

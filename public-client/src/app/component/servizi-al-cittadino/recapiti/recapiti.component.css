@@ -1,9 +1,0 @@
-:host {
-    height: 100%;
-    overflow: auto;
-    display: block;
-    box-sizing: border-box;
-    padding-top: 10px;
-    padding-left: 10px;
-    background-color: white;
-}
