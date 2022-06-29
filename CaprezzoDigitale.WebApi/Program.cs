@@ -64,6 +64,8 @@ if (app.Environment.IsDevelopment() || builder.Environment.IsDockerLocal())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseStaticFilesCaprezzoDigitale(app.Services, builder.Environment);
+
 app.UseRouting();
 
 app.UseAuthorization();
