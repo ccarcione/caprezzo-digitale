@@ -19,13 +19,15 @@ import { SettingsService } from '@core';
 })
 export class TranslateComponent {
   langs = {
+    'it-IT': 'Italiano',
     'en-US': 'English',
-    'zh-CN': '中文简体',
-    'zh-TW': '中文繁体',
+    'es-ES': 'Español',
+    'de-DE': 'Deutsch',
+    'fr-FR': 'Français',
   };
 
   constructor(private translate: TranslateService, private settings: SettingsService) {
-    translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
+    translate.addLangs(['it-IT', 'en-US', 'es-ES', 'de-DE', 'fr-FR']);
   }
 
   useLanguage(language: string) {
