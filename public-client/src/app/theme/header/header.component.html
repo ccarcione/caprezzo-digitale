@@ -1,4 +1,5 @@
 <mat-toolbar class="matero-toolbar">
+  <!-- if you want hide add fxHide.lt-sm -->
   <button mat-icon-button class="matero-toolbar-button" *ngIf="showToggle"
           (click)="toggleSidenav.emit()">
     <mat-icon>menu</mat-icon>
@@ -16,13 +17,13 @@
     <mat-icon>fullscreen</mat-icon>
   </button>
 
-  <app-notification fxHide.lt-sm></app-notification>
+  <!-- <app-notification fxHide.lt-sm></app-notification> -->
 
   <app-translate></app-translate>
 
-  <app-user></app-user>
+  <!-- <app-user></app-user> -->
 
-  <button mat-icon-button class="matero-toolbar-button" fxHide.lt-sm
+  <button mat-icon-button class="matero-toolbar-button"
           (click)="toggleSidenavNotice.emit()">
     <mat-icon>list</mat-icon>
   </button>
