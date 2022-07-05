@@ -16,8 +16,8 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // canActivateChild: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
@@ -26,14 +26,14 @@ const routes: Routes = [
       { path: '500', component: Error500Component },
     ],
   },
-  {
-    path: 'auth',
-    component: AuthLayoutComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-    ],
-  },
+  // {
+  //   path: 'auth',
+  //   component: AuthLayoutComponent,
+  //   children: [
+  //     { path: 'login', component: LoginComponent },
+  //     { path: 'register', component: RegisterComponent },
+  //   ],
+  // },
   { path: '**', redirectTo: 'dashboard' },
 ];
 
