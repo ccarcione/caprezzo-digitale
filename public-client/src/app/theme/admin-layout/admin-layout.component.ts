@@ -96,15 +96,15 @@ export class AdminLayoutComponent implements OnDestroy {
       this.content.scrollTo({ top: 0 });
     });
 
-    // Check whether the browser support `prefers-color-scheme`
-    if (this.mediaMatcher.matchMedia('(prefers-color-scheme)').media !== 'not all') {
-      const isSystemDark = this.mediaMatcher.matchMedia('(prefers-color-scheme: dark)').matches;
-      // Set theme to dark if `prefers-color-scheme` is dark. Otherwise, set it to light.
-      this.options.theme = isSystemDark ? 'dark' : 'light';
-    } else {
-      // If the browser does not support `prefers-color-scheme`, set the default to dark.
-      this.options.theme = 'light';
-    }
+    // // Check whether the browser support `prefers-color-scheme`
+    // if (this.mediaMatcher.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+    //   const isSystemDark = this.mediaMatcher.matchMedia('(prefers-color-scheme: dark)').matches;
+    //   // Set theme to dark if `prefers-color-scheme` is dark. Otherwise, set it to light.
+    //   this.options.theme = isSystemDark ? 'dark' : 'light';
+    // } else {
+    //   // If the browser does not support `prefers-color-scheme`, set the default to dark.
+    //   this.options.theme = 'light';
+    // }
 
     // Initialize project theme with options
     this.receiveOptions(this.options);
