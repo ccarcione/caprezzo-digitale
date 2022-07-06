@@ -7,6 +7,8 @@ import { SettingsService } from './settings.service';
   providedIn: 'root',
 })
 export class TranslateLangService {
+  public static userPreferenceLanguageKey: string = 'user-preference-language';
+
   constructor(
     private injector: Injector,
     private translate: TranslateService,
@@ -17,14 +19,18 @@ export class TranslateLangService {
     return new Promise<void>(resolve => {
       const locationInitialized = this.injector.get(LOCATION_INITIALIZED, Promise.resolve());
       locationInitialized.then(() => {
+        const regexLang = /it-IT|en-US|es-ES|de-DE|fr-FR/;
         const browserLang = navigator.language;
-        const defaultLang = browserLang.match(/it-IT|en-US|es-ES|de-DE|fr-FR/) ? browserLang : 'it-IT';
+        const defaultLang = browserLang.match(regexLang) ? browserLang : 'it-IT';
+        const userPreferenceLang = localStorage.getItem(TranslateLangService.userPreferenceLanguageKey) ?? ''
+          .match(regexLang) ? localStorage.getItem(TranslateLangService.userPreferenceLanguageKey) : null;
+        const lang = userPreferenceLang ?? defaultLang;
 
-        this.settings.setLanguage(defaultLang);
-        this.translate.setDefaultLang(defaultLang);
-        this.translate.use(defaultLang).subscribe(
-          () => console.log(`Successfully initialized '${defaultLang}' language.'`),
-          () => console.error(`Problem with '${defaultLang}' language initialization.'`),
+        this.settings.setLanguage(lang);
+        this.translate.setDefaultLang(lang);
+        this.translate.use(lang).subscribe(
+          () => console.log(`Successfully initialized '${lang}' language.'`),
+          () => console.error(`Problem with '${lang}' language initialization.'`),
           () => resolve()
         );
       });

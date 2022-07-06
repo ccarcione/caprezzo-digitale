@@ -10,7 +10,11 @@ import { SettingsService } from '@core';
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let lang of langs | keyvalue" (click)="useLanguage(lang.key)">
+      <button mat-menu-item *ngFor="let lang of langs | keyvalue" (click)="useLanguage(lang.key)"
+        style="display: flex;
+              flex-direction: row;
+              align-items: center;">
+        <img [src]="getImageUrl(lang.key)" style="width: 24px; margin-right: 10px;">
         <span>{{ lang.value }}</span>
       </button>
     </mat-menu>
@@ -33,5 +37,9 @@ export class TranslateComponent {
   useLanguage(language: string) {
     this.translate.use(language);
     this.settings.setLanguage(language);
+  }
+
+  getImageUrl(key: String) {
+    return 'assets/images/' + key + '.svg';
   }
 }

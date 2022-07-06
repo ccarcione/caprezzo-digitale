@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppSettings, defaults } from '../settings';
+import { TranslateLangService } from './translate-lang.service';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +31,6 @@ export class SettingsService {
   setLanguage(lang: string) {
     this.options.language = lang;
     this.notify$.next({ lang });
+    localStorage.setItem(TranslateLangService.userPreferenceLanguageKey, lang)
   }
 }
