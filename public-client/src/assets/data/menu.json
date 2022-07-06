@@ -11,27 +11,118 @@
       }
     },
     {
+      "route": "galleria",
+      "name": "galleria",
+      "type": "link",
+      "icon": "monochrome_photos"
+    },
+    {
       "route": "/",
-      "name": "sessions",
+      "name": "covid-19",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "healing",
       "children": [
         {
-          "route": "403",
-          "name": "403",
+          "route": "https://giscovid.sdp.csi.it/tiles/",
+          "name": "mappa-piemonte",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://opendatadpc.maps.arcgis.com/apps/opsdashboard/index.html#/b0c68bce2cce478eaac82fe38d4138b1",
+          "name": "mappa-italia",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://covid19.who.int/",
+          "name": "mappa-del-mondo",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://www.salute.gov.it/portale/nuovocoronavirus/archivioMonitoraggiNuovoCoronavirus.jsp",
+          "name": "ministero-della-salute",
+          "type": "extTabLink"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "fibra",
+      "type": "sub",
+      "icon": "cable-data",
+      "children": [
+        {
+          "route": "https://bandaultralarga.italia.it/mappa/?entity=103018",
+          "name": "mappa-fibra",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://app.powerbi.com/view?r=eyJrIjoiYzY2ZDg0MjEtZWRkMS00OTAwLTlhM2MtNTI2N2ZiYTE5NGQ5IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9",
+          "name": "dashboard-cantieri",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://bandaultralarga.italia.it/indirizzo/",
+          "name": "verifica-copertura",
+          "type": "extTabLink"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "amministrazione-trasparente",
+      "type": "sub",
+      "icon": "supervised_user_circle",
+      "children": [
+        {
+          "route": "http://www.amministrazionetrasparenteweb.it/index.asp?cc=uvglm_ax",
+          "name": "amministrazione-trasparente",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://www.servizipubblicaamministrazione.it/servizi/saturnweb/home.aspx?ce=mntnvlgrnd806",
+          "name": "albo-pretorio",
+          "type": "extTabLink"
+        },
+        {
+          "route": "http://www.comune.caprezzo.vb.it/albo.aspx",
+          "name": "albo-pretorio-2018",
+          "type": "extTabLink"
+        },
+        {
+          "route": "https://www.pa-online.it/GisMasterWebS/SU/SU.aspx?IdCliente=TD0419&IdSU=Sue",
+          "name": "sportello-unico-edilizia",
+          "type": "extTabLink"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "informazioni",
+      "type": "sub",
+      "icon": "info",
+      "children": [
+        {
+          "route": "about",
+          "name": "about",
           "type": "link"
         },
         {
-          "route": "404",
-          "name": "404",
+          "route": "chi-siamo",
+          "name": "chi-siamo",
           "type": "link"
         },
         {
-          "route": "500",
-          "name": "500",
+          "route": "privacy-policy",
+          "name": "privacy-policy",
           "type": "link"
         }
       ]
+    },
+    {
+      "route": "feedback",
+      "name": "feedback",
+      "type": "link",
+      "icon": "star"
     }
   ]
 }
