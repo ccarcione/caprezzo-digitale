@@ -1,6 +1,6 @@
 export interface AppSettings {
   navPos: 'side' | 'top';
-  theme: 'light' | 'dark';
+  theme: 'light' | 'dark';  // always in automatic mode based on the time
   dir: 'ltr' | 'rtl';
   showHeader: boolean;
   headerPos: 'fixed' | 'static' | 'above';
@@ -12,7 +12,7 @@ export interface AppSettings {
 
 export const defaults: AppSettings = {
   navPos: 'side',
-  theme: 'dark',
+  theme: 'light',
   dir: 'ltr',
   showHeader: true,
   headerPos: 'fixed',

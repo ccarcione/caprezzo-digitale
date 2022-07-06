@@ -20,6 +20,8 @@ import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SettingsService, AppSettings } from '@core';
 import { AppDirectionality } from '@shared';
 
+import { getSunrise, getSunset } from 'sunrise-sunset-js';
+
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
 const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
@@ -105,6 +107,15 @@ export class AdminLayoutComponent implements OnDestroy {
     //   // If the browser does not support `prefers-color-scheme`, set the default to dark.
     //   this.options.theme = 'light';
     // }
+
+    const sunsetHours = getSunset(45.980240, 8.561450).getHours();
+    const sunriseHours = getSunrise(45.980240, 8.561450).getHours();
+    const nowHours = new Date().getHours();
+    if (!(nowHours > sunriseHours && nowHours < sunsetHours))
+    {
+      // set dark theme
+      this.options.theme = 'dark';
+    }
 
     // Initialize project theme with options
     this.receiveOptions(this.options);
