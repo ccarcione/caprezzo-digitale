@@ -1,10 +1,17 @@
 <div class="matero-sidebar-header" *ngIf="showHeader">
   <app-branding></app-branding>
   <span fxFlex></span>
-  <mat-slide-toggle *ngIf="showToggle"
+  <div *ngIf="showToggle">
+    <button mat-icon-button (click)="toggleAndEmit()">
+      <mat-icon *ngIf="toggleChecked">lock_open</mat-icon>
+      <mat-icon *ngIf="!toggleChecked">lock</mat-icon>
+    </button>
+  </div>
+
+  <!-- <mat-slide-toggle *ngIf="showToggle"
                     [checked]="toggleChecked"
                     (change)="toggleCollapsed.emit()">
-  </mat-slide-toggle>
+  </mat-slide-toggle> -->
 </div>
 
 <div class="matero-sidebar-main scrollbar-none">

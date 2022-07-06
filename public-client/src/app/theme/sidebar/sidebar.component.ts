@@ -13,4 +13,9 @@ export class SidebarComponent {
   @Input() toggleChecked = false;
 
   @Output() toggleCollapsed = new EventEmitter<void>();
+
+  toggleAndEmit() {
+    this.toggleChecked = !this.toggleChecked;
+    this.toggleCollapsed.emit();
+  }
 }
