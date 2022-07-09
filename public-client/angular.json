@@ -79,6 +79,14 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "docker-local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.docker-local.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -94,6 +102,9 @@
             },
             "options": {
               "proxyConfig": "proxy.config.js"
+            },
+            "docker-local": {
+              "browserTarget": "public-client:build:docker-local"
             }
           },
           "defaultConfiguration": "development"

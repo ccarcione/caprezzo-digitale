@@ -1,0 +1,57 @@
+# avvia il progetto dev locale dentro i containers (uno per progetto)
+# NB: prerequisiti:
+# - npm i
+# - dotnet restore
+services:
+  api:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    working_dir: /repo
+    entrypoint:
+      - dotnet
+      - run
+      - --project
+      - CaprezzoDigitale.WebApi\CaprezzoDigitale.WebApi.csproj
+    environment:
+      # DOTNET_USE_POLLING_FILE_WATCHER: true
+      - ASPNETCORE_ENVIRONMENT=docker-local
+    container_name: caprezzodigitale-api-local
+    volumes:
+      - type: bind
+        source: .
+        target: /repo
+    depends_on:
+      - db
+    ports:
+      - "5001:5000"
+  db:
+    image: postgres
+    container_name: caprezzodigitale-db-local
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+  adminer:
+    image: adminer
+    container_name: caprezzodigitale-adminer
+    restart: always
+    ports:
+      - 8080:8080
+  site:
+    image: node:16
+    working_dir: /repo
+    entrypoint:
+      - npm
+      - run
+      - docker-local
+    container_name: caprezzodigitale-site-local
+    ports:
+      - "4200:4200"
+    volumes:
+      - type: bind
+        source: public-client
+        target: /repo
+volumes:
+  db-data:

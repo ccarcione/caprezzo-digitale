@@ -11,7 +11,8 @@
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "eslint \"src/**/*.ts\" --fix",
     "lint:scss": "stylelint \"src/**/*.scss\" --fix",
-    "hmr": "ng serve --hmr --disable-host-check"
+    "hmr": "ng serve --hmr --disable-host-check",
+    "docker-local": "ng serve --configuration=docker-local --host 0.0.0.0 --poll 500"
   },
   "private": true,
   "dependencies": {
