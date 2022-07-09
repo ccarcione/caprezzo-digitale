@@ -4,17 +4,19 @@ import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { AuthService, User } from '@core/authentication';
 import { Menu, MenuService } from './menu.service';
 import { HttpClient } from '@angular/common/http';
+import { PwaUpdateService } from '@core/pwa-update-service/pwa-update-service.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StartupService {
   constructor(
-    private authService: AuthService,
+    // private authService: AuthService,
     private menuService: MenuService,
     private permissonsService: NgxPermissionsService,
     private rolesService: NgxRolesService,
-    private http: HttpClient
+    private http: HttpClient,
+    public pwaUpdateService: PwaUpdateService,
   ) {}
 
   /**
@@ -40,6 +42,8 @@ export class StartupService {
           this.setMenu(c);
           resolve();
         });
+
+      this.pwaUpdateService.checkForUpdates();
     });
   }
 

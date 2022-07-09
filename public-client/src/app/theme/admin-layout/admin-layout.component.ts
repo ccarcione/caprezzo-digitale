@@ -21,6 +21,7 @@ import { SettingsService, AppSettings } from '@core';
 import { AppDirectionality } from '@shared';
 
 import { getSunrise, getSunset } from 'sunrise-sunset-js';
+import { ToastrService } from 'ngx-toastr';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
@@ -74,7 +75,8 @@ export class AdminLayoutComponent implements OnDestroy {
     private element: ElementRef,
     private settings: SettingsService,
     @Optional() @Inject(DOCUMENT) private document: Document,
-    @Inject(Directionality) public dir: AppDirectionality
+    @Inject(Directionality) public dir: AppDirectionality,
+    private toastr: ToastrService
   ) {
     this.dir.value = this.options.dir!;
     this.document.body.dir = this.dir.value;
@@ -116,6 +118,8 @@ export class AdminLayoutComponent implements OnDestroy {
       // set dark theme
       this.options.theme = 'dark';
     }
+
+    this.toastr.info('Benvenuto!');
 
     // Initialize project theme with options
     this.receiveOptions(this.options);

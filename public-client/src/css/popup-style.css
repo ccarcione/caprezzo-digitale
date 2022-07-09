@@ -1,0 +1,57 @@
+.installPopup {
+    right: 0;
+    bottom: 15px;
+    left: 0;
+    display: flex;
+    margin: 0px 10px;
+    margin-bottom: 16px;
+    padding: 10px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+    color: #303030;
+    background: #f2f8ff;
+    align-items: center;
+    z-index: 999;
+    position: absolute;
+}
+.icon1 {
+    width: 25px;
+    vertical-align: middle;
+}
+.icon2 {
+    height: 30px;
+    margin-right: 10px;
+}
+.quadrato {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+    display: block;
+    z-index: 998;
+}
+.quadrato > div {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    margin-top: -8px;
+    background: #f2f8ff;
+    transform:rotate(45deg);
+}
+.nb-installPopup {
+    padding-top: 5px;
+    font-size: smaller;
+}
+.container-button-azione {
+    display: flex;
+    justify-content: space-around;
+}
+.container-button-azione button {
+    background:#17AADF;
+    color:#fff;
+    border:none;
+    border-radius:3px;
+    padding:10px;
+    cursor:pointer;
+    -webkit-appearance: none;
+    margin-top: 10px;
+}

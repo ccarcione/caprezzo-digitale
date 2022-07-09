@@ -25,6 +25,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     FormlyConfigModule.forRoot(),
     NgxPermissionsModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      tapToDismiss: true,
+      newestOnTop: true,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      disableTimeOut: false
+    }), // ToastrModule added
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -46,6 +54,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       },
     }),
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },

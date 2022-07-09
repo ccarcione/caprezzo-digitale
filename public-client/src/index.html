@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PublicClient</title>
+  <title>Caprezzo Digitale</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icons/icon-512x512.png">
+
+  <link rel="icon" type="image/png" href="favicon-96x96.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="assets/fonts/Material_Icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -71,9 +76,32 @@
       }
     }
     </style>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
 <body>
+  <div style="display: none;" id="installMessageForAppleDevice">
+    <div class="installPopup">
+      <div>
+        <img src="assets/images/installPopup2.png" class="icon2" alt="" />
+      </div>
+      <div>
+        Installa l'app sul tuo iPhone: clicca
+        <img src="assets/images/installPopup1.png" class="icon1" alt="" />
+        e poi Aggiungi alla Schermata Home.
+        <div class="nb-installPopup">Sui dispositivi Apple alcune funzioni sono limitate.</div>
+        <div class="container-button-azione">
+          <button onclick="hideInstallPopupButton()">Non ora</button>
+          <button onclick="setIgnorePwaKeyOnLocalStorageOnIosDevice()">Non mostrare più</button>
+          <div style="width: 30px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="quadrato"><div></div></div>
+  </div>
+
   <app-root></app-root>
   <div id="globalLoader" class="global-loader"><h1>LOADING</h1></div>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>
