@@ -2,40 +2,40 @@ stages:
   - build
   - deploy
 
-build-api:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-    - >-
-      /kaniko/executor
-      --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/docker/api.dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/caprezzodigitale-api:${CI_COMMIT_TAG}"
-#   rules:
-#     - if: $CI_COMMIT_TAG =~ /v-/
-#     - if: '$CI_COMMIT_BRANCH == "staging"'
+# build-api:
+#   stage: build
+#   image:
+#     name: gcr.io/kaniko-project/executor:debug
+#     entrypoint: [""]
+#   script:
+#     - mkdir -p /kaniko/.docker
+#     - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+#     - >-
+#       /kaniko/executor
+#       --context "${CI_PROJECT_DIR}"
+#       --dockerfile "${CI_PROJECT_DIR}/docker/api.dockerfile"
+#       --destination "${CI_REGISTRY_IMAGE}/caprezzodigitale-api:${CI_COMMIT_TAG}"
+# #   rules:
+# #     - if: $CI_COMMIT_TAG =~ /v-/
+# #     - if: '$CI_COMMIT_BRANCH == "staging"'
 
-# https://docs.gitlab.com/ee/ci/docker/using_kaniko.html
-build-site:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-    - >-
-      /kaniko/executor
-      --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/docker/site.dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/caprezzodigitale-site:${CI_COMMIT_TAG}"
-#   rules:
-#     - if: $CI_COMMIT_TAG =~ /v-/
-#     - if: '$CI_COMMIT_BRANCH == "staging"'
+# # https://docs.gitlab.com/ee/ci/docker/using_kaniko.html
+# build-site:
+#   stage: build
+#   image:
+#     name: gcr.io/kaniko-project/executor:debug
+#     entrypoint: [""]
+#   script:
+#     - mkdir -p /kaniko/.docker
+#     - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+#     - >-
+#       /kaniko/executor
+#       --context "${CI_PROJECT_DIR}"
+#       --dockerfile "${CI_PROJECT_DIR}/docker/site.dockerfile"
+#       --destination "${CI_REGISTRY_IMAGE}/caprezzodigitale-site:${CI_COMMIT_TAG}"
+# #   rules:
+# #     - if: $CI_COMMIT_TAG =~ /v-/
+# #     - if: '$CI_COMMIT_BRANCH == "staging"'
 
 deploy-staging:
   stage: deploy
@@ -45,8 +45,8 @@ deploy-staging:
     USER: "$DEV_USER"
     PASSWORD: "$DEV_PASSWORD"
     TEMP_FOLDER: "/temp-gitlab/${CI_PROJECT_NAME}"
-    IMAGE: registry.gitlab.com/projects-experimenta/caprezzodigitale/caprezzodigitale-api:latest
-    IMAGE2: registry.gitlab.com/projects-experimenta/caprezzodigitalecaprezzodigitale-site:latest
+    IMAGE: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-site:latest
+    IMAGE2: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-site:latest
     COMPOSEFILE_DIR: docker
     COMPOSEFILE_NAME: docker-compose.staging-cicd.yml
     COMPOSE_PROJECT_NAME: caprezzodigitale-staging
