@@ -46,10 +46,23 @@ namespace CaprezzoDigitale.WebApi.Helpers
                 }
                 logger.LogDebug("******************** Start SeedMockData ********************");
                 SeedTipiMessaggio(app, logger);
-                SeedMessaggi(app, logger);
-                SeedGalleria(app, logger);
-                SeedTipiStatistiche(app, logger);
+
                 // seed Messaggi con eventuali allegati
+                bool ignoreSeedMessaggi;
+                bool.TryParse(options.WebApiOptions["ignoreSeedMessaggi"], out ignoreSeedMessaggi);
+                if (!ignoreSeedMessaggi)
+                {
+                    SeedMessaggi(app, logger);
+                }    
+
+                bool ignoreSeedGalleria;
+                bool.TryParse(options.WebApiOptions["ignoreSeedGalleria"], out ignoreSeedGalleria);
+                if (!ignoreSeedGalleria)
+                {
+                    SeedGalleria(app, logger);
+                }
+
+                SeedTipiStatistiche(app, logger);
                 logger.LogDebug("******************** End SeedMockData ********************");
             }
 
