@@ -29,5 +29,5 @@ services:
     # da rimuovere in produzione perchè gestisce nginx
     # ports:
     #   - "80:80"
-# volumes:
-#   db-data:
+volumes:
+  db-data:
