@@ -1,7 +1,7 @@
 # crea lo stack (images e container) per la produzione
 services:
   api:
-    image: registry.gitlab.com/projects-experimenta/caprezzodigitale/caprezzodigitale-api
+    image: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-api
     environment:
       - ASPNETCORE_ENVIRONMENT=staging
     container_name: caprezzodigitale-api-staging
@@ -24,7 +24,7 @@ services:
 #     # ports:
 #     #   - "5433:5432"
   site:
-    image: registry.gitlab.com/projects-experimenta/caprezzodigitale/caprezzodigitale-api
+    image: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-api
     container_name: public-client-site-staging
     # da rimuovere in produzione perchè gestisce nginx
     # ports:
