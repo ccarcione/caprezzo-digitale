@@ -48,7 +48,7 @@ deploy-staging:
     USER: "$DEV_USER"
     PASSWORD: "$DEV_PASSWORD"
     TEMP_FOLDER: "/temp-gitlab/${CI_PROJECT_NAME}"
-    IMAGE: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-site:latest
+    IMAGE: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-api:latest
     IMAGE2: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-site:latest
     COMPOSEFILE_DIR: docker
     COMPOSEFILE_NAME: docker-compose.staging-cicd.yml

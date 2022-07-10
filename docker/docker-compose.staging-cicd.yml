@@ -24,7 +24,7 @@ services:
 #     # ports:
 #     #   - "5433:5432"
   site:
-    image: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-api
+    image: registry.gitlab.com/projects-experimenta/caprezzo-digitale/caprezzodigitale-site
     container_name: public-client-site-staging
     # da rimuovere in produzione perchè gestisce nginx
     # ports:
