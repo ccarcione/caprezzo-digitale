@@ -1,0 +1,33 @@
+# crea lo stack (images e container) per la produzione
+services:
+  api:
+    image: registry.gitlab.com/projects-experimenta/caprezzodigitale/caprezzodigitale-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=staging
+    container_name: caprezzodigitale-api-staging
+    # da rimuovere in staging/produzione perchè gestisce nginx
+    # ports:
+    #   - "80:80"
+#    depends_on:
+#      - db
+#   # enable only the first publication.
+#   # subsequently the db must always remain active because it is shared with other containers
+#   db:
+#     image: postgres:14
+#     container_name: caprezzodigitale-db-staging
+#     restart: always
+#     environment:
+#       POSTGRES_PASSWORD: (!)gySFguJ7RvoS
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+#     # abilitare per raggiungere il container sqlserver in locale
+#     # ports:
+#     #   - "5433:5432"
+  site:
+    image: registry.gitlab.com/projects-experimenta/caprezzodigitale/caprezzodigitale-api
+    container_name: public-client-site-staging
+    # da rimuovere in produzione perchè gestisce nginx
+    # ports:
+    #   - "80:80"
+# volumes:
+#   db-data:
