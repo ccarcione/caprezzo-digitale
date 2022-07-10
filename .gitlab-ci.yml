@@ -8,9 +8,9 @@ build-api:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
-    - sed -i s/ApiKey_CICD_Value/$APIKEY_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi\appsettings.staging.json
-    - sed -i s/ClientName_CICD_Value/$CLIENTNAME_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi\appsettings.staging.json
-    - sed -i s/SmtpPassword_CICD_Value/$SMTPPASSWORD_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi\appsettings.staging.json
+    - sed -i s/ApiKey_CICD_Value/$APIKEY_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
+    - sed -i s/ClientName_CICD_Value/$CLIENTNAME_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
+    - sed -i s/SmtpPassword_CICD_Value/$SMTPPASSWORD_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - >-
