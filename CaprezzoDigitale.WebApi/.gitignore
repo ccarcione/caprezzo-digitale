@@ -47,5 +47,7 @@ PublicGalleria/
 temp/
 BollettiniArpa/
 mock_data/
-appsettings.*.json
+appsettings.[Dd]evelopment.json
+appsettings.docker-local.json
+appsettings.[Pp]roduction.json
 SerilogSelf.log
