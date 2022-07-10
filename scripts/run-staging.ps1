@@ -1,0 +1,1 @@
+docker compose --file .\docker\docker-compose.staging.yml --project-directory . --project-name caprezzodigitale-staging up --build

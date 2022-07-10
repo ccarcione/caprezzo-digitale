@@ -1,0 +1,43 @@
+# crea lo stack (images e container) per la produzione
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: docker/staging.api.dockerfile
+    image: caprezzodigitale-staging
+    environment:
+      - ASPNETCORE_ENVIRONMENT=staging
+    container_name: caprezzodigitale-api-staging
+    # da rimuovere in staging/produzione perchè gestisce nginx
+    # ports:
+    #   - "80:80"
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    container_name: caprezzodigitale-db-staging
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: (!)gySFguJ7RvoS
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    # abilitare per raggiungere il container sqlserver in locale
+    # ports:
+    #   - "5433:5432"
+  adminer:
+    image: adminer
+    container_name: caprezzodigitale-adminer
+    restart: always
+    ports:
+      - 8080:8080
+  site:
+    build:
+      context: .
+      dockerfile: docker/staging.site.dockerfile
+    image: public-client-staging
+    container_name: public-client-site-staging
+    # da rimuovere in produzione perchè gestisce nginx
+    ports:
+      - "80:80"
+volumes:
+  db-data:
