@@ -161,5 +161,11 @@
     "confirm_delete": "Confirm delete?",
     "ok": "Ok",
     "close": "Close"
+  },
+  "notification-list": {
+    "notifications_active": "Turn off Notifications",
+    "notifications_off": "Enable Notifications",
+    "send_notification_sample": "Send Notification Sample",
+    "enable_notification_toast_message": "Turn on Notifications"
   }
 }

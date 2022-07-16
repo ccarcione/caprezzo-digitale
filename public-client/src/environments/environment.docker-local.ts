@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   baseUrl: '',
   useHash: false,
+  apiUrl: 'http://localhost:5001',
+  VAPID_PUBLIC_KEY: "",
 };
 
 /*

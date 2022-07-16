@@ -1,0 +1,12 @@
+<div>
+  <button *ngIf="subscriptionToNotificationsValue" mat-icon-button (click)="unsubscribeToNotifications()">
+    <mat-icon>notifications_active</mat-icon> {{'notification-list.notifications_active' | translate }}
+  </button>
+  <button *ngIf="!subscriptionToNotificationsValue" mat-icon-button (click)="subscribeToNotifications()">
+    <mat-icon>notifications_off</mat-icon> {{'notification-list.notifications_off' | translate }}
+  </button>
+</div>
+
+<button class="button button-primary" (click)="sendNotification()">
+  {{'notification-list.send_notification_sample' | translate}}
+</button>
