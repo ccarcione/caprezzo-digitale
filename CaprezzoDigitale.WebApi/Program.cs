@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 // **************************************************************
@@ -40,6 +41,16 @@ builder.Services.AddSingleton(x => new CaprezzoDigitale.WebApi.Models.Options()
     ApiKeyAuthOptions = builder.Configuration.GetSection("CaprezzoDigitale.WebApi.Models.Options.ApiKeyAuthOptions").Get<IEnumerable<ApiKeyAuthOptions>>()
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
 
 
 // **************************************************************
@@ -68,6 +79,8 @@ if (!app.Environment.IsProduction())
 app.UseStaticFilesCaprezzoDigitale(app.Services, builder.Environment);
 
 app.UseRouting();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

@@ -52,5 +52,7 @@ namespace CaprezzoDigitale.WebApi.Models
         public DbSet<Statistica> Statistiche { get; set; }
         public DbSet<TipoStatistica> TipiStatistica { get; set; }
         public DbSet<BollettinoArpa> BollettiniArpa { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Keys> SubscriptionKeys { get; set; }
     }
 }
