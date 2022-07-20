@@ -167,5 +167,9 @@
     "notifications_off": "Enable Notifications",
     "send_notification_sample": "Send Notification Sample",
     "enable_notification_toast_message": "Turn on Notifications"
+  },
+  "slidebar-notice": {
+    "today_label": "Today",
+    "notifications_label": "Notifications"
   }
 }

@@ -167,5 +167,9 @@
     "notifications_off": "Attiva Notifiche",
     "send_notification_sample": "Invia esempio di notifica",
     "enable_notification_toast_message": "Attiva le Notifiche"
+  },
+  "slidebar-notice": {
+    "today_label": "Oggi",
+    "notifications_label": "Notifiche"
   }
 }
