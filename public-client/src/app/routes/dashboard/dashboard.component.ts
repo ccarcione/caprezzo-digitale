@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.http.get(environment.apiUrl + '/api/values').subscribe(s => {
-      console.log(s);
-      alert(s);
+      console.info(s);
       this.values = JSON.stringify(s);
     });
   }
