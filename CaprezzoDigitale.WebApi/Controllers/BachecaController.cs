@@ -10,12 +10,12 @@ namespace CaprezzoDigitale.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiKeyAuth]
-    public class MessaggioController : ControllerBase
+    public class BachecaController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly Options options;
 
-        public MessaggioController(ApplicationDbContext context, Options options)
+        public BachecaController(ApplicationDbContext context, Options options)
         {
             _context = context;
             this.options = options;

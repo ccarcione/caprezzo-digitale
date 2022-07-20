@@ -1,22 +1,27 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { environment } from '@env/environment';
+import { Subscription } from 'rxjs';
+import { BachecaService } from './bacheca.service';
+import { Messaggio } from './models/messaggio';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
 
-  values: String = "???";
+  messages: Messaggio[] = [];
+  sub: Subscription = new Subscription();
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private cdr: ChangeDetectorRef, private bachecaService: BachecaService) {}
 
   ngOnInit() {
-    this.http.get(environment.apiUrl + '/api/values').subscribe(s => {
-      console.info(s);
-      this.values = JSON.stringify(s);
-    });
+    this.sub.add(
+      this.bachecaService.messages$.subscribe(l => {
+        this.messages = l;
+        console.info(l);
+      }
+    ));
   }
 }
