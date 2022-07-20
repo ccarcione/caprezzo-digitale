@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ApiKeyAuthInterceptor } from '@core/interceptors/apikeyauth-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -67,6 +68,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     // { provide: LoginService, useClass: FakeLoginService }, // <= Remove it in the real APP
     httpInterceptorProviders,
     appInitializerProviders,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiKeyAuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

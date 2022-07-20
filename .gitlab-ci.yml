@@ -8,10 +8,12 @@ build-api:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
+    # ApiKey secret
     - sed -i s/ApiKey_CICD_Value/$APIKEY_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
-    - sed -i s/ClientName_CICD_Value/$CLIENTNAME_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
+    - sed -i s/ApiKeyClientName_CICD_Value/$APIKEYCLIENTNAME_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
+    # Email secret
     - sed -i s/SmtpPassword_CICD_Value/$SMTPPASSWORD_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
-    
+    # Notification secret
     - sed -i s/NotificationSubject_CICD_Value/$NOTIFICATIONSUBJECT_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
     - sed -i s/NotificationPublicKey_CICD_Value/$NOTIFICATIONPUBLICKEY_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
     - sed -i s/NotificationPrivateKey_CICD_Value/$NOTIFICATIONPRIVATEKEY_STAGING_CICD_VALUE/ CaprezzoDigitale.WebApi/appsettings.staging.json
@@ -38,7 +40,13 @@ build-site:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
+    # ApiKey secret
+    - sed -i s/ApiKey_CICD_Value/$APIKEY_STAGING_CICD_VALUE/ public-client/src/environments/environment.prod.ts
+    - sed -i s/ApiKeyClientName_CICD_Value/$APIKEYCLIENTNAME_STAGING_CICD_VALUE/ public-client/src/environments/environment.prod.ts
+
+    # Notification VAPID_PUBLIC_KEY secret
     - sed -i s/NotificationPublicKey_CICD_Value/$NOTIFICATIONPUBLICKEY_STAGING_CICD_VALUE/ public-client/src/environments/environment.prod.ts
+
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - >-

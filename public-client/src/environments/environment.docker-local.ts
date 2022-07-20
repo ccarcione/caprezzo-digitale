@@ -7,7 +7,9 @@ export const environment = {
   baseUrl: '',
   useHash: false,
   apiUrl: 'http://localhost:5001',
-  VAPID_PUBLIC_KEY: "",
+  ApiKey: "",
+  ApiKeyPath: 'api/',
+  ApiKeyClientName: 'public-client',
 };
 
 /*

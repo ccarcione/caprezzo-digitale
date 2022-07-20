@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,6 +7,7 @@ namespace CaprezzoDigitale.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class ValuesController : ControllerBase
     {
         // GET: api/<ValuesController>
