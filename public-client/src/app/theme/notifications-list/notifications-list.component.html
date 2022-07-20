@@ -1,11 +1,28 @@
 <div>
-  <button *ngIf="subscriptionToNotificationsValue" mat-icon-button (click)="unsubscribeToNotifications()">
+  <button *ngIf="subscriptionToNotificationsValue" class="button-fill margin"
+    mat-button (click)="unsubscribeToNotifications()">
     <mat-icon>notifications_active</mat-icon> {{'notification-list.notifications_active' | translate }}
   </button>
-  <button *ngIf="!subscriptionToNotificationsValue" mat-icon-button (click)="subscribeToNotifications()">
+  <button *ngIf="!subscriptionToNotificationsValue" class="button-fill margin"
+  mat-raised-button color="warn" (click)="subscribeToNotifications()">
     <mat-icon>notifications_off</mat-icon> {{'notification-list.notifications_off' | translate }}
   </button>
 </div>
+
+<mat-divider></mat-divider>
+<mat-card class="notification-card margin">
+  <div class="notification-header">
+    <div class="notification-title">
+      <mat-icon>dashboard</mat-icon>
+      <div>ALLERTA METEO</div>
+    </div>
+    <div>28/02</div>
+  </div>
+
+  <div class="notification-content">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. In illum dolor et sit aut aperiam accusantium animi ad. Natus optio corrupti soluta ad corporis eveniet doloremque necessitatibus dicta iste neque?
+  </div>
+</mat-card>
 
 <button class="button button-primary" (click)="sendNotification()">
   {{'notification-list.send_notification_sample' | translate}}

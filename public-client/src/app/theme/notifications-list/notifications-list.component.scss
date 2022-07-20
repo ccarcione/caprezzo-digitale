@@ -1,0 +1,28 @@
+.button-fill {
+  width: -webkit-fill-available;
+}
+
+.margin {
+  margin: 10px;
+}
+
+.notification-card {
+  margin-bottom: 8px;
+  background-color: lightgrey;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.notification-title > mat-icon {
+  margin-right: 5px;
+}
+
+.notification-title {
+  display: flex;
+  align-items: center;
+}
