@@ -1,10 +1,12 @@
-﻿using CaprezzoDigitale.WebApi.Models;
+﻿using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
+using CaprezzoDigitale.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CaprezzoDigitale.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class StatisticheController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

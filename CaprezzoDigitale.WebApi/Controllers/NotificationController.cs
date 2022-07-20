@@ -1,4 +1,5 @@
-﻿using CaprezzoDigitale.WebApi.Models;
+﻿using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
+using CaprezzoDigitale.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using WebPush;
@@ -9,6 +10,7 @@ namespace CaprezzoDigitale.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class NotificationController : ControllerBase
     {
         private ApplicationDbContext _context;

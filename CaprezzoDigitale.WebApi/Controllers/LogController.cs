@@ -1,4 +1,5 @@
-﻿using EmailTools;
+﻿using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
+using EmailTools;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
@@ -6,6 +7,7 @@ namespace CaprezzoDigitale.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class LogController : ControllerBase
     {
         private readonly ILogger<LogController> _logger;

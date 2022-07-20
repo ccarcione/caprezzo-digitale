@@ -1,4 +1,5 @@
-﻿using CaprezzoDigitale.WebApi.Models;
+﻿using CaprezzoDigitale.WebApi.ApiKeyAuthorization;
+using CaprezzoDigitale.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace CaprezzoDigitale.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class MessaggioController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
