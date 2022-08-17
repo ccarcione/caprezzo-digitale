@@ -74,17 +74,18 @@ namespace CaprezzoDigitale.WebApi.Controllers
         {
             if (!string.IsNullOrWhiteSpace(messaggio.UrlImmagineCopertina))
             {
-                messaggio.UrlImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagineCopertina}";
+                messaggio.UrlImmagineCopertina =
+                    $"{options.WebApiOptions["url"]}/{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagineCopertina}";
             }
             if (!string.IsNullOrWhiteSpace(messaggio.UrlPdfImmagineCopertina))
             {
-                messaggio.UrlPdfImmagineCopertina = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlPdfImmagineCopertina}";
+                messaggio.UrlPdfImmagineCopertina = $"{options.WebApiOptions["url"]}/{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlPdfImmagineCopertina}";
             }
         }
 
         private void BuildUrlAllegato(Allegato allegato, long messageId)
         {
-            allegato.FilePath = $"{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messageId}/{allegato.FilePath}";
+            allegato.FilePath = $"{options.WebApiOptions["url"]}/{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{allegato.FilePath}";
         }
 
     }

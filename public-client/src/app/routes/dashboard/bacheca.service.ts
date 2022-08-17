@@ -17,11 +17,6 @@ export class BachecaService {
   initMessageHub() {
     return this.http.get<Messaggio[]>(url).pipe(
       switchMap(messages => {
-        messages = messages.map(message => {
-          let m = new Messaggio(message);
-          m.allegati.forEach(a => a.filePath = a.filePath ? `${location.origin}/${a.filePath}` : '')
-          return m;
-        });
         this.messageSub.next(messages);
         return this.messageSub.asObservable();
       })
