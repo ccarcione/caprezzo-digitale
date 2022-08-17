@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@mixin theme($theme) {
+  $is-dark-theme: map.get($theme, is-dark);
+
+  .tipo-messaggio-displayText {
+    @if $is-dark-theme {
+      background-color: dimgrey;
+    }
+    @else {
+      background-color: lightgray;
+    }
+  }
+}

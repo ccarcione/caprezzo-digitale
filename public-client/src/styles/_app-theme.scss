@@ -9,6 +9,7 @@
 @use '../app/shared/components/error-code/error-code-theme';
 
 @use './custom/table-theme';
+@use '../app/routes/dashboard/dashboard-theme';
 
 @include mat.core();
 
@@ -25,4 +26,6 @@
   @include error-code-theme.theme($theme);
 
   @include table-theme.theme($theme);
+
+  @include dashboard-theme.theme($theme);
 }

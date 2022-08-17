@@ -1,1 +1,37 @@
-<page-header></page-header>
+<!-- <page-header></page-header> -->
+
+<div class="container">
+  <div class="card" *ngFor="let message of bachecaService.messages$ | async">
+    <div [ngClass]="message.urlImmagineCopertina ? 'copertina' : 'no-copertina' ">
+      <img src="{{message.urlImmagineCopertina}}" (click)="openPdfViewerPopup(message.urlPdfImmagineCopertina, message.titolo)">
+    </div>
+
+    <div class="titoli">
+      <h1>{{message.titolo}}</h1>
+      <div class="chips">
+        <mat-icon [ngStyle]="{'color': message.tipoMessaggio.colore}">{{message.tipoMessaggio.icona}}</mat-icon>
+        <span class="tipo-messaggio-displayText" style="font-size: small;">{{message.tipoMessaggio.displayName}}</span>
+      </div>
+      <h4>{{message.dataPubblicazione | date: 'dd MMMM yyyy'}}</h4>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="card-action">
+      <div>
+        <button mat-button class="detail-message-button"
+          *ngIf="message.showMore">{{'dashboard.read_more' | translate}}</button>
+      </div>
+      <div>
+        <button mat-button>
+          <mat-icon>favorite_border</mat-icon>
+          <!-- <mat-icon>favorite</mat-icon> -->
+        </button>
+        <button mat-button>
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -171,5 +171,8 @@
   "slidebar-notice": {
     "today_label": "Today",
     "notifications_label": "Notifications"
+  },
+  "dashboard": {
+    "read_more": "read more"
   }
 }

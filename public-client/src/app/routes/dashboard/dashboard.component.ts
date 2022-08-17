@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { BachecaService } from './bacheca.service';
 import { Messaggio } from './models/messaggio';
@@ -11,17 +12,17 @@ import { Messaggio } from './models/messaggio';
 })
 export class DashboardComponent implements OnInit {
 
-  messages: Messaggio[] = [];
-  sub: Subscription = new Subscription();
+  constructor(private cdr: ChangeDetectorRef,
+    public bachecaService: BachecaService,
+    private translate: TranslateService) {}
 
-  constructor(private cdr: ChangeDetectorRef, private bachecaService: BachecaService) {}
+  ngOnInit() {  }
 
-  ngOnInit() {
-    this.sub.add(
-      this.bachecaService.messages$.subscribe(l => {
-        this.messages = l;
-        console.info(l);
-      }
-    ));
+  openPdfViewerPopup(urlPdfImmagineCopertina: string, titolo: string) {
+
+  }
+
+  openMessage(message: Messaggio) {
+
   }
 }

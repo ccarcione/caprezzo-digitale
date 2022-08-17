@@ -161,5 +161,8 @@
     "confirm_delete": "Confirm delete?",
     "ok": "Ok",
     "close": "Close"
+  },
+  "dashboard": {
+    "read_more": "weiterlesen"
   }
 }

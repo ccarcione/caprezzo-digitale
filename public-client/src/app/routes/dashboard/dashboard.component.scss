@@ -1,0 +1,106 @@
+:host {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+h4 {
+  color: gray;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 10px;
+  box-shadow: 4px 2px 11px 0px rgba(0,0,0,0.75);
+  flex: 1 0 31%;
+  height: 550px;
+  justify-content: space-between;
+}
+
+.titoli {
+  padding:10px;
+  flex-grow: 2;
+}
+
+.copertina {
+  flex-grow: 1;
+  height: 350px;
+  overflow: hidden;
+}
+
+.no-copertina {
+  display: none;
+}
+
+img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-action {
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-action button {
+  height: 50px;
+}
+
+.detail-message-button {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+.chips {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chips mat-icon {
+  transform: rotate(45deg);
+  margin-right: 5px;
+}
+
+.tipo-messaggio-displayText {
+  padding: 5px 10px;
+  border-radius: 50px;
+}
+
+@media only screen and (max-width: 1025px) {
+  .card {
+    flex: 1 0 46%;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .card {
+    flex: 0 0 100%;
+  }
+}
