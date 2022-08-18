@@ -86,7 +86,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-DatabaseHelper.UpdateDatabaseMigrate(app, builder.Environment, app.Services.GetRequiredService<ILogger<Program>>());
+DatabaseHelper.UpdateDatabaseMigrate(app, app.Services.GetRequiredService<ILogger<Program>>());
 DatabaseHelper.SeedAllData(app, app.Services.GetRequiredService<ILogger<Program>>());
 
 app.Run();

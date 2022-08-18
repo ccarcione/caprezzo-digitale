@@ -11,7 +11,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
 {
     public class DatabaseHelper
     {
-        public static void UpdateDatabaseMigrate(IApplicationBuilder app, IWebHostEnvironment env, ILogger logger)
+        public static void UpdateDatabaseMigrate(IApplicationBuilder app, ILogger logger)
         {
             using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -169,9 +169,14 @@ namespace CaprezzoDigitale.WebApi.Helpers
             using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 Options options = scope.ServiceProvider.GetRequiredService<Options>();
+                List<string> validExtImage = new List<string>()
+                {
+                    ".bmp", ".jpg", ".jpeg", ".jpe", ".jfif", ".gif", ".png"
+                };
 
                 List<string> listImageFileName = Directory
                     .GetFiles(UtilityHelper.GetWindowsLinuxPath(options.WebApiOptions["mockImage_Path"]))
+                    .Where(f => validExtImage.Contains(Path.GetExtension(f)))
                     .OrderBy(o => o)
                     .ToList();
                 logger.LogDebug($"Immagini galleria found: {listImageFileName.Count()}.");
@@ -190,8 +195,7 @@ namespace CaprezzoDigitale.WebApi.Helpers
                         countCopyImage++;
                     }
                 });
-                logger.LogDebug($"Copy {countCopyImage} new images to the folder {options.WebApiOptions["galleria_FolderPath"]}.");
-                logger.LogDebug($"Seed {count} immagini in galleria.");
+                logger.LogDebug($"Copy {countCopyImage}/{count} new images to the folder {options.WebApiOptions["galleria_FolderPath"]}.");
             }
         }
         private static void SeedTipiStatistiche(IApplicationBuilder app, ILogger logger)

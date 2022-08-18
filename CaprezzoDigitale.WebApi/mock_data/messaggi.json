@@ -1,0 +1,108 @@
+[
+  {
+    "titolo": "primo titolo",
+    "sottotitolo": "primo sottotitolo",
+    "dataPubblicazione": "0001-01-01T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "primo testo bla bla bla....",
+    "tipoMessaggioId": 1
+  },
+  {
+    "titolo": "ORDINANZA N� 3/2020 DEL 10/12/2020",
+    "sottotitolo": "IL SINDACO",
+    "dataPubblicazione": "2020-12-11T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "In data odierna tra le 10.00 e le ore 10:30 si � verificata una frana di crollo a monte della strada Caprezzo C.la Porta in prossimit� della sorgente del Rio della Valle, con invasione della sede stradale comunale da parte del materiale franato e di alcuni esemplari arborei.",
+    "tipoMessaggioId": 1
+  },
+  {
+    "titolo": "TUTTI I GIORNI PIZZA",
+    "sottotitolo": null,
+    "dataPubblicazione": "2020-01-11T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "ANCHE DA ASPORTO/TAKE AWAY! SIA A PRANZO CHE A CENA PREVIA PRENOTAZIONE TEL. 3468011471",
+    "tipoMessaggioId": 2
+  },
+  {
+    "titolo": "PRANZO DI NATALE 2020 DA ASPORTO",
+    "sottotitolo": "Crediamo che il miglior modo di passare questo Natale 2020 sia ognuno nella propria casa accanto ai propri familiari, per questo abbiamo pensato al nostro PRANZO DI NATALE 2020 DA ASPORTO.",
+    "dataPubblicazione": "2020-12-08T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "Men�; Primo; Secondo; Formaggi; Dolce;\n\nPER PRENOTAZIONI\nDA SABATO 12 DICEMBRE SINO AL 22 DICEMBRE, POTRETE CHIAMARCI AL 346 8011471, OPPURE PASSARE IN BOTTEGA",
+    "tipoMessaggioId": 2
+  },
+  {
+    "titolo": "Calendario feste natalizie",
+    "sottotitolo": "Parrocchie di\n S. Pietro (Trobaso)\nSan Bartolomeo (Caprezzo)\nS. Brizio (Cossogno)",
+    "dataPubblicazione": "2020-12-18T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "Gioved� 24 dicembre\nVenerd� 25 dicembre: Natale\nSabato 26 dicembre: S. Stefano\nDomenica 27 dicembre: S. Famiglia",
+    "tipoMessaggioId": 3
+  },
+  {
+    "titolo": "BILBIOTECA CIVICA DI CAPREZZO \"LUISA CASTELNOVO\"",
+    "sottotitolo": "Via Vico, 4 - 28815 Caprezzo (Verbania) e-mail caprezzo@bilbiotechevco.it",
+    "dataPubblicazione": "2020-12-20T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "In attesa di nuove disposizioni per tutto il periodo delle festivit� continua il servizio di consegna dei libri a domicilio.\nContattateci: trovate il nostro catalogo on line sul sito \"bibliotechevco\".\nAppena ci saranno nuove norme per la riapertura al pubblico sar� nostra premura avvisarvi.\nBuona lettura e tanti auguri di buone feste!\nAnna e Laura",
+    "tipoMessaggioId": 4
+  },
+  {
+    "titolo": "Orario della s. Messa",
+    "sottotitolo": null,
+    "dataPubblicazione": "2020-12-27T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "Gioved� 24 dicembre h.18,00 S. Messa della Notte di Natale\nDomenica 27 dicembre h. 17,00 S.Messa - Sacra Famiglia\n*********************************************\nVenerd� 1 gennaio h. 10,00 S. Messa- Maria SS. Madre di Dio\nSabato 2 gennaio h. 17,00 S. Messa\\Marted� 5 gennaio h. 17,00 S. Messa - Epifania di N.S.G.C.\nSabato 9 - 16 - 23 e 30 gennaio: h. 17,00 S. Messa",
+    "tipoMessaggioId": 3,
+    "allegati": [
+      {
+        "descrizione": "descrizione allegato",
+        "filePath": "sample.pdf"
+      },
+      {
+        "descrizione": "PDF File - World Wide Web Consortium",
+        "filePath": "dummy.pdf"
+      }
+    ]
+  },
+  {
+    "titolo": "AUTOLINEA INTRA CAPREZZO",
+    "sottotitolo": "Orari emergenza COVID-19 in vigore dal 04//05//2020 al 13//09//2020\nSOLO SU PRENOTAZIONE\nbla bla bla",
+    "dataPubblicazione": "2020-04-01T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "***TABELLA ORARI***\n* Se ci sono prenotazioni da/per Aurano ed Intragna il bus passa prima da Aurano ed Intragna e poi prosegue per Verbania",
+    "tipoMessaggioId": 5
+  },
+  {
+    "titolo": "AVVISO IMPORTANTE",
+    "sottotitolo": "Misure di contenimento del contagio allo scopo di contrastare e contenere il diffondersi del virus COVID-19",
+    "dataPubblicazione": "2020-11-06T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "Si avvisa che l'accertata presenza sul territorio comunale di persone:\n\n1) non residenti;\n2) non gi� stabilmente domiciliate alla data del 6 novembre;\n3) non adette ad attivit� lavorative consentite;\n\nSARA' SEGNALATA ALLE FORSE DELL'ORDINE PER GLI ADEMPIMENTI DI COMPETENZA.\nE' fatto d'obbligo ai soggetti non residenti, ma stabilmente domiciliati in seconde case, di comunicare al comune a mezzo mail, ovvero direttamente al sindaco (Tel: 348-2256728) la loro presenza unitamente ai dati anagrafici dei componenti del nucleo.\n Caprezzo, li 06//11//2020\n IL SINDACO\n Pierangelo Ballardini",
+    "tipoMessaggioId": 1
+  },
+  {
+    "titolo": "ORDINANZA SINDACALE N� 6/2019 DEL 07/10/2019",
+    "sottotitolo": "TAGLIO DI VEGETAZIONE IN GENERE, RAMI E PIANTE PERICOLOSI, LUNGO I MARGINI STRADALI E LIMITROFI ALLE AREE PUBBLICHE",
+    "dataPubblicazione": "2019-10-07T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "PRESO ATTO;\nCONSIDERATO;\nVERIFICATO;\nRITENUTO;\nORDINA;\nRAMMENTA ALTRESI';\nDISPONE;\nRICORDA CHE;\nIL SINDACO",
+    "tipoMessaggioId": 1
+  },
+  {
+    "titolo": "Decreto Natale",
+    "sottotitolo": null,
+    "dataPubblicazione": "2020-12-15T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "DAL 24 DICEMBRE AL 6 GENNAIO\n***TABELLA ZONE DECRETO***",
+    "tipoMessaggioId": 6
+  },
+  {
+    "titolo": "Stop a visite ed esami con priorit� D e P saranno garantite le urgente e le priorit� B",
+    "sottotitolo": null,
+    "dataPubblicazione": "2020-12-15T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "A seguito delle disposizioni regionali del DIRMEI assunte in relazione all'andamento della pandemia da coronavirus\nDa luned� 2 novembre... bla bla bla..",
+    "tipoMessaggioId": 6
+  }
+]

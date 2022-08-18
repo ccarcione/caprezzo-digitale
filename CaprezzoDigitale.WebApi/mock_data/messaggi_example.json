@@ -1,0 +1,25 @@
+[
+  {
+    "titolo": "primo titolo",
+    "sottotitolo": "primo sottotitolo",
+    "dataPubblicazione": "2022-06-28T00:00:00",
+    "urlImmagineCopertina": "https://img.itch.zone/aW1nLzI5NDY5MDUucG5n/original/AL%2FbDV.png",
+    "testo": "primo testo bla bla bla....",
+    "tipoMessaggioId": 1
+  },
+  {
+    "titolo": "titolo 2",
+    "sottotitolo": "sottotitolo due",
+    "dataPubblicazione": "2022-06-28T00:00:00",
+    "urlImmagineCopertina": "",
+    "testo": "testo testo testo",
+    "tipoMessaggioId": 2,
+    "allegati": [
+      {
+        "descrizione": "",
+        "fileName": "",
+        "filePath": ""
+      }
+    ]
+  }
+]

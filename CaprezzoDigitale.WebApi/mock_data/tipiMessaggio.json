@@ -1,0 +1,44 @@
+[
+  {
+    "displayName": "Ordinanze",
+    "descrizione": "Ordinanza è il termine con il quale vengono denominati provvedimenti di vario genere, sovente emanati da organi monocratici.",
+    "colore": "red",
+    "icona":  "label"
+  },
+  {
+    "displayName": "Ristorazione",
+    "descrizione": "Messaggi e avvisi del circolo di Caprezzo e Bottega.",
+    "colore": "blue",
+    "icona": "label"
+  },
+  {
+    "displayName": "Parrocchia di San Bartolomeo",
+    "descrizione": "Messaggi e avvisi chiesa.",
+    "colore": "green",
+    "icona": "label"
+  },
+  {
+    "displayName": "Biblioteca",
+    "descrizione": "Messaggi e avvisi della biblioteca.",
+    "colore": "#",
+    "icona": "label"
+  },
+  {
+    "displayName": "Tasporto pubblico",
+    "descrizione": null,
+    "colore": "yellow",
+    "icona": "label"
+  },
+  {
+    "displayName": "Comunicazioni dal Comune",
+    "descrizione": null,
+    "colore": "purple",
+    "icona": "label"
+  },
+  {
+    "displayName": "displayName 2",
+    "descrizione": "descrizione 2",
+    "colore": "brown",
+    "icona": "label"
+  }
+]
