@@ -72,7 +72,8 @@ namespace CaprezzoDigitale.WebApi.Controllers
 
         private void BuildUrlCopertina(Messaggio messaggio)
         {
-            if (!string.IsNullOrWhiteSpace(messaggio.UrlImmagineCopertina))
+            if (!string.IsNullOrWhiteSpace(messaggio.UrlImmagineCopertina)
+                && !Uri.IsWellFormedUriString(messaggio.UrlImmagineCopertina, UriKind.Absolute))
             {
                 messaggio.UrlImmagineCopertina =
                     $"{options.WebApiOptions["url"]}/{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{messaggio.UrlImmagineCopertina}";
@@ -87,6 +88,6 @@ namespace CaprezzoDigitale.WebApi.Controllers
         {
             allegato.FilePath = $"{options.WebApiOptions["url"]}/{options.WebApiOptions["publicStaticFiles_RequestPath"]}/{allegato.FilePath}";
         }
-
+        
     }
 }
