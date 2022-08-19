@@ -13,8 +13,6 @@ export class Messaggio {
     tipoMessaggio!: TipoMessaggio;
     allegati!: Allegato[];
 
-    showMore:boolean = false;
-
     constructor(data?: Partial<Messaggio>) {
         Object.assign(this, data);
     }

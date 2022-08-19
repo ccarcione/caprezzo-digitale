@@ -19,10 +19,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {  }
 
   openPdfViewerPopup(urlPdfImmagineCopertina: string, titolo: string) {
-
+    console.log("openPdfViewerPopup", urlPdfImmagineCopertina, titolo);
   }
 
   openMessage(message: Messaggio) {
-
+    console.log("openMessage", message);
   }
 }

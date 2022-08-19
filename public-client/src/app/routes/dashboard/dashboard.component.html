@@ -19,8 +19,8 @@
 
     <div class="card-action">
       <div>
-        <button mat-button class="detail-message-button"
-          *ngIf="message.showMore">{{'dashboard.read_more' | translate}}</button>
+        <button mat-button (click)="openMessage(message)"
+          class="detail-message-button">{{'dashboard.read_more' | translate}}</button>
       </div>
       <div>
         <button mat-button>
